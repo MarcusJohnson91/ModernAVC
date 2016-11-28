@@ -1,2 +1,15 @@
-
+.DS_Store
+thumbs.db
+desktop.ini
+._*
+*.o
+*.a
+*.exe
+*.lib
+/BUILD/*
+*.html
+*.xcuserstate
+*.xcbkptlist
+project.xcworkspace/
+xcuserdata/
 LibAVC/include/Common_OLD.h
