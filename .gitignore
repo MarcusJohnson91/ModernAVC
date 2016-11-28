@@ -13,3 +13,4 @@ desktop.ini
 project.xcworkspace/
 xcuserdata/
 LibAVC/include/Common_OLD.h
+xcuserdata/*
