@@ -14,4 +14,4 @@ project.xcworkspace/
 xcuserdata/
 LibAVC/include/Common_OLD.h
 xcuserdata/*
-LibAVC/libAVC.xcodeproj/project.xcworkspace/xcuserdata/Marcus.xcuserdatad/UserInterfaceState.xcuserstate
+*.xcuserstate
