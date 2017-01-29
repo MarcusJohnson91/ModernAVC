@@ -59,12 +59,7 @@ uninstall:
 
 clean:
 	cd $(BUILD_DIR)/libAVC/
-	rm -f -v -r libAVC.o
-	rm -f -v -r DecodeSEI.o
-	rm -f -v -r DecodeAVC.o
-	rm -f -v -r DecodeSlice.o
-	rm -f -v -r DecodeMacroBlock.o
-	rm -f -v -r ParseNAL.o
+	rm -f -v -r *.o
 	rm -f -v -r libAVC.a
 	rm -f -v -r .DS_Store
 	rm -f -v -r Thumbs.db
