@@ -25,7 +25,6 @@ CHECK_VERS:
 	$(shell echo ${VERSION})
 
 release:
-	mkdir -p   $(BUILD_DIR)
 	mkdir -p   $(BUILD_DIR)/libAVC
 	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libAVC/src/Decoder/DecodeSEI.c -o $(BUILD_DIR)/libAVC/DecodeSEI.o
 	$(CC)      $(REL_FLAGS) -c $(CURDIR)/libAVC/src/Decoder/DecodeSlice.c -o $(BUILD_DIR)/libAVC/DecodeSlice.o
@@ -37,7 +36,6 @@ release:
 	ranlib -sf $(BUILD_DIR)/libAVC/libAVC.a
 
 debug:
-	mkdir -p   $(BUILD_DIR)
 	mkdir -p   $(BUILD_DIR)/libAVC
 	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libAVC/src/Decoder/DecodeSEI.c -o $(BUILD_DIR)/libAVC/DecodeSEI.o
 	$(CC)      $(DEB_FLAGS) -c $(CURDIR)/libAVC/src/Decoder/DecodeSlice.c -o $(BUILD_DIR)/libAVC/DecodeSlice.o
