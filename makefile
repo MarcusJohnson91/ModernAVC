@@ -1,19 +1,22 @@
-PACKAGE_NAME        := libAVC
-FILE                := $(CURDIR)/libAVC/include/libAVC.h
-VERSION             := $(shell cat ${FILE} | grep -e "@version")
 CC                  := cc
-DESTINATION         := /usr/local/Packages/$(PACKAGE_NAME)
-BUILD_DIR           := $(CURDIR)/BUILD
-CFLAGS              := -std=c11 -march=native -funroll-loops `pkg-config --libs libBitIO` -ferror-limit=1024
+CURDIR              := $(shell pwd)
+LIB                 := libAVC
+PREFIX              ?= /usr/local/Packages/$(LIB)
+VERSION              = `grep @version $(CURDIR)/libBitIO/include/BitIO.h | echo | grep -o '[0-9]\.[0-9]\.[0-9]'`
+CFLAGS              := -std=c11 -march=native -funroll-loops -ferror-limit=1024
 LDFLAGS             := -flto=thin
-DEB_ERROR_OPTIONS   := -Wno-unused-parameter -Wno-unused-variable -Wno-int-conversion
-REL_ERROR_OPTIONS   := -Weverything -Wunreachable-code -Wno-conversion
+
+BUILD_DIR           := $(CURDIR)/BUILD
+LIB_DIR             := $(CURDIR)/libAVC/src
+LIB_INC             := $(CURDIR)/libAVC/include
+BUILD_LIB           := $(BUILD_DIR)/libAVC
+
 DEB_FLAGS           := $(CFLAGS) -g -o0 $(DEB_ERROR_OPTIONS) $(LDFLAGS)
 REL_FLAGS           := $(CFLAGS) -ofast $(REL_ERROR_OPTIONS) $(LDFLAGS)
 
 .PHONY: all detect_platform Release Debug Install Uninstall Clean distclean
 
-all: release
+all:
 	$(release)
 	$(install)
 check: 
@@ -23,6 +26,10 @@ distclean:
 
 CHECK_VERS:
 	$(shell echo ${VERSION})
+
+
+
+$(BUILD_LIB)/libAVC.a():
 
 release:
 	mkdir -p   $(BUILD_DIR)/libAVC
@@ -47,13 +54,13 @@ debug:
 	ranlib -sf $(BUILD_DIR)/libAVC/libAVC.a
 
 install:
-	install -d -m 777 $(DESTINATION)/lib
-	install -d -m 777 $(DESTINATION)/include
-	install -C -v -m 444 $(BUILD_DIR)/libAVC/libAVC.a $(DESTINATION)/lib/libAVC.a
-	install -C -v -m 444 $(CURDIR)/libAVC/include/libAVC.h $(DESTINATION)/include/libAVC.h
+	install -d -m 777 $(PREFIX)/lib
+	install -d -m 777 $(PREFIX)/include
+	install -C -v -m 444 $(BUILD_DIR)/libAVC/libAVC.a $(PREFIX)/lib/libAVC.a
+	install -C -v -m 444 $(CURDIR)/libAVC/include/libAVC.h $(PREFIX)/include/libAVC.h
 
 uninstall:
-	rm -d -i $(DESTINATION)
+	rm -d -i $(PREFIX)
 
 clean:
 	cd $(BUILD_DIR)/libAVC/
