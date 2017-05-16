@@ -13,7 +13,7 @@
 		2C7B4C111EC9B4AF0078DC59 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C0D1EC9B4AF0078DC59 /* Common.h */; };
 		2C7B4C121EC9B4AF0078DC59 /* libModernAVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */; };
 		2C7B4C131EC9B4AF0078DC59 /* ModernAVCTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C0F1EC9B4AF0078DC59 /* ModernAVCTypes.h */; };
-		2C7B4C141EC9B4AF0078DC59 /* Tables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C101EC9B4AF0078DC59 /* Tables.h */; };
+		2C7B4C141EC9B4AF0078DC59 /* ModernAVCTables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C101EC9B4AF0078DC59 /* ModernAVCTables.h */; };
 		2C7B4C191EC9B4C90078DC59 /* DecodeAVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C151EC9B4C90078DC59 /* DecodeAVC.h */; };
 		2C7B4C1A1EC9B4C90078DC59 /* DecodeMacroBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C161EC9B4C90078DC59 /* DecodeMacroBlock.h */; };
 		2C7B4C1B1EC9B4C90078DC59 /* DecodeSlice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C171EC9B4C90078DC59 /* DecodeSlice.h */; };
@@ -24,7 +24,6 @@
 		2C7B4C281EC9B5160078DC59 /* DecodeAVC.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C231EC9B5160078DC59 /* DecodeAVC.c */; };
 		2C7B4C291EC9B5160078DC59 /* DecodeMacroBlock.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */; };
 		2C7B4C2A1EC9B5160078DC59 /* DecodeSlice.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */; };
-		2C7B4C2B1EC9B5160078DC59 /* DemuxAVCFile.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C261EC9B5160078DC59 /* DemuxAVCFile.c */; };
 		2C7B4C2C1EC9B5160078DC59 /* ParseNAL.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C271EC9B5160078DC59 /* ParseNAL.c */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +57,7 @@
 		2C7B4C0D1EC9B4AF0078DC59 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../libModernAVC/include/Common.h; sourceTree = "<group>"; };
 		2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC.h; path = ../libModernAVC/include/libModernAVC.h; sourceTree = "<group>"; };
 		2C7B4C0F1EC9B4AF0078DC59 /* ModernAVCTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModernAVCTypes.h; path = ../libModernAVC/include/ModernAVCTypes.h; sourceTree = "<group>"; };
-		2C7B4C101EC9B4AF0078DC59 /* Tables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tables.h; path = ../libModernAVC/include/Tables.h; sourceTree = "<group>"; };
+		2C7B4C101EC9B4AF0078DC59 /* ModernAVCTables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModernAVCTables.h; path = ../libModernAVC/include/ModernAVCTables.h; sourceTree = "<group>"; };
 		2C7B4C151EC9B4C90078DC59 /* DecodeAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecodeAVC.h; path = ../libModernAVC/include/Decode/DecodeAVC.h; sourceTree = "<group>"; };
 		2C7B4C161EC9B4C90078DC59 /* DecodeMacroBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecodeMacroBlock.h; path = ../libModernAVC/include/Decode/DecodeMacroBlock.h; sourceTree = "<group>"; };
 		2C7B4C171EC9B4C90078DC59 /* DecodeSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecodeSlice.h; path = ../libModernAVC/include/Decode/DecodeSlice.h; sourceTree = "<group>"; };
@@ -69,7 +68,6 @@
 		2C7B4C231EC9B5160078DC59 /* DecodeAVC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DecodeAVC.c; path = ../libModernAVC/src/Decode/DecodeAVC.c; sourceTree = "<group>"; };
 		2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DecodeMacroBlock.c; path = ../libModernAVC/src/Decode/DecodeMacroBlock.c; sourceTree = "<group>"; };
 		2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DecodeSlice.c; path = ../libModernAVC/src/Decode/DecodeSlice.c; sourceTree = "<group>"; };
-		2C7B4C261EC9B5160078DC59 /* DemuxAVCFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DemuxAVCFile.c; path = ../libModernAVC/src/Decode/DemuxAVCFile.c; sourceTree = "<group>"; };
 		2C7B4C271EC9B5160078DC59 /* ParseNAL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ParseNAL.c; path = ../libModernAVC/src/Decode/ParseNAL.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,10 +139,10 @@
 		2C16FCFC1DDF8EFC00E72D7F /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				2C7B4C0D1EC9B4AF0078DC59 /* Common.h */,
 				2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */,
 				2C7B4C0F1EC9B4AF0078DC59 /* ModernAVCTypes.h */,
-				2C7B4C101EC9B4AF0078DC59 /* Tables.h */,
+				2C7B4C0D1EC9B4AF0078DC59 /* Common.h */,
+				2C7B4C101EC9B4AF0078DC59 /* ModernAVCTables.h */,
 				2C1ED4591E20BB6F00115556 /* Encoder */,
 				2C1ED4581E20BB5400115556 /* Decoder */,
 			);
@@ -174,10 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				2C7B4C231EC9B5160078DC59 /* DecodeAVC.c */,
-				2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */,
-				2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */,
-				2C7B4C261EC9B5160078DC59 /* DemuxAVCFile.c */,
 				2C7B4C271EC9B5160078DC59 /* ParseNAL.c */,
+				2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */,
+				2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */,
 			);
 			name = Decode;
 			sourceTree = "<group>";
@@ -217,7 +214,7 @@
 				2C7B4C1E1EC9B4DF0078DC59 /* EncodeAVC.h in Headers */,
 				2C7B4C1C1EC9B4C90078DC59 /* ParseNAL.h in Headers */,
 				2C7B4C191EC9B4C90078DC59 /* DecodeAVC.h in Headers */,
-				2C7B4C141EC9B4AF0078DC59 /* Tables.h in Headers */,
+				2C7B4C141EC9B4AF0078DC59 /* ModernAVCTables.h in Headers */,
 				2C7B4C1A1EC9B4C90078DC59 /* DecodeMacroBlock.h in Headers */,
 				2C7B4C121EC9B4AF0078DC59 /* libModernAVC.h in Headers */,
 				2C7B4C1B1EC9B4C90078DC59 /* DecodeSlice.h in Headers */,
@@ -283,7 +280,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C16FCEF1DDF8EE100E72D7F /* Build configuration list for PBXProject "libAVC" */;
+			buildConfigurationList = 2C16FCEF1DDF8EE100E72D7F /* Build configuration list for PBXProject "ModernAVC" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -324,7 +321,6 @@
 			files = (
 				2C7B4C201EC9B4F90078DC59 /* Common.c in Sources */,
 				2C7B4C281EC9B5160078DC59 /* DecodeAVC.c in Sources */,
-				2C7B4C2B1EC9B5160078DC59 /* DemuxAVCFile.c in Sources */,
 				2C7B4C2C1EC9B5160078DC59 /* ParseNAL.c in Sources */,
 				2C7B4C221EC9B5060078DC59 /* EncodeAVC.c in Sources */,
 				2C7B4C2A1EC9B5160078DC59 /* DecodeSlice.c in Sources */,
@@ -365,7 +361,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -417,7 +413,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -489,7 +485,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C16FCEF1DDF8EE100E72D7F /* Build configuration list for PBXProject "libAVC" */ = {
+		2C16FCEF1DDF8EE100E72D7F /* Build configuration list for PBXProject "ModernAVC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C16FCF61DDF8EE100E72D7F /* Debug */,
