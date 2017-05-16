@@ -36,39 +36,33 @@ extern "C" {
         SetCMDSwitchDescription(CMD, 3, "Decode AVC to output");
         SetCMDSwitchResultStatus(CMD, 3, false);
         
-        SetCMDSwitchFlag(CMD, 4, "Resolution", 10);
-        SetCMDSwitchDescription(CMD, 4, "Resolution in WidthxHeight format");
+        SetCMDSwitchFlag(CMD, 4, "Bitrate", 7);
+        SetCMDSwitchDescription(CMD, 4, "Target bitrate for the produced AVC file, supported postfixes: MBps, KBps (mega bits, kilo bits (1024))");
         SetCMDSwitchResultStatus(CMD, 4, true);
         
-        SetCMDSwitchFlag(CMD, 5, "Bitrate", 7);
-        SetCMDSwitchDescription(CMD, 5, "Target bitrate for the produced AVC file, supported postfixes: MBps, KBps (mega bits, kilo bits (1024))");
+        SetCMDSwitchFlag(CMD, 5, "Subsample", 9);
+        SetCMDSwitchDescription(CMD, 5, "Should the produced AVC file use chroma subsampling? if so, what type");
         SetCMDSwitchResultStatus(CMD, 5, true);
         
-        SetCMDSwitchFlag(CMD, 6, "Subsample", 9);
-        SetCMDSwitchDescription(CMD, 6, "Should the produced AVC file use chroma subsampling? if so, what type");
+        SetCMDSwitchFlag(CMD, 6, "Framerate", 9);
+        SetCMDSwitchDescription(CMD, 6, "the framerate of the movie, for decimal fpses, use fractional notation IE: 24000/1001");
         SetCMDSwitchResultStatus(CMD, 6, true);
         
-        SetCMDSwitchFlag(CMD, 7, "Framerate", 9);
-        SetCMDSwitchDescription(CMD, 7, "the framerate of the movie, for decimal fpses, use fractional notation IE: 24000/1001");
+        SetCMDSwitchFlag(CMD, 7, "Profile", 9);
+        SetCMDSwitchDescription(CMD, 7, "the level to encode the movie with, IE: 5.2");
         SetCMDSwitchResultStatus(CMD, 7, true);
         
-        SetCMDSwitchFlag(CMD, 8, "Profile", 9);
-        SetCMDSwitchDescription(CMD, 8, "the level to encode the movie with, IE: 5.2");
-        SetCMDSwitchResultStatus(CMD, 8, true);
+        SetCMDSwitchFlag(CMD, 8, "Interlace", 9);
+        SetCMDSwitchDescription(CMD, 8, "Should the movie be interlaced?");
+        SetCMDSwitchResultStatus(CMD, 8, false);
         
-        SetCMDSwitchFlag(CMD, 9, "Interlace", 9);
-        SetCMDSwitchDescription(CMD, 9, "Should the movie be interlaced?");
+        SetCMDSwitchFlag(CMD, 9, "Lossless", 8);
+        SetCMDSwitchDescription(CMD, 9, "Encode the AVC file losslessly and only uses lossless color transforms like YCgCo");
         SetCMDSwitchResultStatus(CMD, 9, false);
         
-        SetCMDSwitchFlag(CMD, 10, "Lossless", 8);
-        SetCMDSwitchDescription(CMD, 10, "Encode the AVC file losslessly and only uses lossless color transforms like YCgCo");
+        SetCMDSwitchFlag(CMD, 10, "Help", 4);
+        SetCMDSwitchDescription(CMD, 10, "Prints all the command line options");
         SetCMDSwitchResultStatus(CMD, 10, false);
-        
-        SetCMDSwitchFlag(CMD, 11, "Help", 4);
-        SetCMDSwitchDescription(CMD, 11, "Prints all the command line options");
-        SetCMDSwitchResultStatus(CMD, 11, false);
-        
-        // Switch 6 is NULL, aka the auto Help option. Fuck it, the user will just have to code that themselves.
         
         return CMD;
     }
@@ -81,20 +75,37 @@ extern "C" {
         BitBuffer          *InputBitB = InitBitBuffer();
         BitBuffer          *OutputBitB = InitBitBuffer();
         
-        // We should add a function to BitIO that can tell us if an input command is a network address or a file.
-        
         ParseCommandLineArguments(CMD, argc, argv);
-        if        (GetCMDSwitchPresence(CMD, 2) == true) {
-            // Split string into resolution.
-        } else if (GetCMDSwitchPresence(CMD, 3) == true) { // Encode
-            EncodeAVC     *Enc   = InitEncodeAVC();
-            AVCEncodeImage(Enc, BitO);
-        } else if (GetCMDSwitchPresence(CMD, 4) == true) { // Decode
-            DecodeAVC     *Dec   = InitDecodeAVC();
-            AVCDecodeImage(InputBitB, Dec, NULL);
+        
+        if (GetCMDSwitchPresence(CMD, 0)) { // Input
+            
+        } else if (GetCMDSwitchPresence(CMD, 1)) { // Output
+            
+        } else if (GetCMDSwitchPresence(CMD, 2)) { // Encode
+            
+        } else if (GetCMDSwitchPresence(CMD, 3)) { // Decode
+            
+        } else if (GetCMDSwitchPresence(CMD, 4)) { // Bitrate
+            
+        } else if (GetCMDSwitchPresence(CMD, 5)) { // Subsampling
+            
+        } else if (GetCMDSwitchPresence(CMD, 6)) { // Framerate
+            
+        } else if (GetCMDSwitchPresence(CMD, 7)) { // Profile
+            
+        } else if (GetCMDSwitchPresence(CMD, 8)) { // Interlacing
+            
+        } else if (GetCMDSwitchPresence(CMD, 9)) { // Lossless
+            
+        } else if (GetCMDSwitchPresence(CMD, 10)) { // Help
+            
         }
         
         CloseCommandLineOptions(CMD);
+        CloseBitInput(BitI);
+        CloseBitOutput(BitO);
+        CloseBitBuffer(InputBitB);
+        CloseBitBuffer(OutputBitB);
         
         return EXIT_SUCCESS;
     }

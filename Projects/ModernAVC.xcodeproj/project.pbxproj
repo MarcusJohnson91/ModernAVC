@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2C03FC801E850CDC0075BA8C /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC7F1E850CC40075BA8C /* libBitIO.a */; };
+		2C7B4C0B1EC9B22B0078DC59 /* ModernAVC.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C0A1EC9B22B0078DC59 /* ModernAVC.c */; };
+		2C7B4C0C1EC9B44A0078DC59 /* libModernAVC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */; };
+		2C7B4C111EC9B4AF0078DC59 /* Common.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C0D1EC9B4AF0078DC59 /* Common.h */; };
+		2C7B4C121EC9B4AF0078DC59 /* libModernAVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */; };
+		2C7B4C131EC9B4AF0078DC59 /* ModernAVCTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C0F1EC9B4AF0078DC59 /* ModernAVCTypes.h */; };
+		2C7B4C141EC9B4AF0078DC59 /* Tables.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C101EC9B4AF0078DC59 /* Tables.h */; };
+		2C7B4C191EC9B4C90078DC59 /* DecodeAVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C151EC9B4C90078DC59 /* DecodeAVC.h */; };
+		2C7B4C1A1EC9B4C90078DC59 /* DecodeMacroBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C161EC9B4C90078DC59 /* DecodeMacroBlock.h */; };
+		2C7B4C1B1EC9B4C90078DC59 /* DecodeSlice.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C171EC9B4C90078DC59 /* DecodeSlice.h */; };
+		2C7B4C1C1EC9B4C90078DC59 /* ParseNAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C181EC9B4C90078DC59 /* ParseNAL.h */; };
+		2C7B4C1E1EC9B4DF0078DC59 /* EncodeAVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C1D1EC9B4DF0078DC59 /* EncodeAVC.h */; };
+		2C7B4C201EC9B4F90078DC59 /* Common.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C1F1EC9B4F90078DC59 /* Common.c */; };
+		2C7B4C221EC9B5060078DC59 /* EncodeAVC.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C211EC9B5060078DC59 /* EncodeAVC.c */; };
+		2C7B4C281EC9B5160078DC59 /* DecodeAVC.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C231EC9B5160078DC59 /* DecodeAVC.c */; };
+		2C7B4C291EC9B5160078DC59 /* DecodeMacroBlock.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */; };
+		2C7B4C2A1EC9B5160078DC59 /* DecodeSlice.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */; };
+		2C7B4C2B1EC9B5160078DC59 /* DemuxAVCFile.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C261EC9B5160078DC59 /* DemuxAVCFile.c */; };
+		2C7B4C2C1EC9B5160078DC59 /* ParseNAL.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C271EC9B5160078DC59 /* ParseNAL.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2C03FC7E1E850CC40075BA8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C419FD51E5B00CC00FC804F;
+			remoteInfo = libBitIO;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2C7B4C001EC9B1AB0078DC59 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
+		2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModernAVC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7B4C021EC9B1AB0078DC59 /* ModernAVC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ModernAVC; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7B4C0A1EC9B22B0078DC59 /* ModernAVC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ModernAVC.c; path = ../ModernAVC/ModernAVC.c; sourceTree = "<group>"; };
+		2C7B4C0D1EC9B4AF0078DC59 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Common.h; path = ../libModernAVC/include/Common.h; sourceTree = "<group>"; };
+		2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC.h; path = ../libModernAVC/include/libModernAVC.h; sourceTree = "<group>"; };
+		2C7B4C0F1EC9B4AF0078DC59 /* ModernAVCTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModernAVCTypes.h; path = ../libModernAVC/include/ModernAVCTypes.h; sourceTree = "<group>"; };
+		2C7B4C101EC9B4AF0078DC59 /* Tables.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tables.h; path = ../libModernAVC/include/Tables.h; sourceTree = "<group>"; };
+		2C7B4C151EC9B4C90078DC59 /* DecodeAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecodeAVC.h; path = ../libModernAVC/include/Decode/DecodeAVC.h; sourceTree = "<group>"; };
+		2C7B4C161EC9B4C90078DC59 /* DecodeMacroBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecodeMacroBlock.h; path = ../libModernAVC/include/Decode/DecodeMacroBlock.h; sourceTree = "<group>"; };
+		2C7B4C171EC9B4C90078DC59 /* DecodeSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DecodeSlice.h; path = ../libModernAVC/include/Decode/DecodeSlice.h; sourceTree = "<group>"; };
+		2C7B4C181EC9B4C90078DC59 /* ParseNAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParseNAL.h; path = ../libModernAVC/include/Decode/ParseNAL.h; sourceTree = "<group>"; };
+		2C7B4C1D1EC9B4DF0078DC59 /* EncodeAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EncodeAVC.h; path = ../libModernAVC/include/Encode/EncodeAVC.h; sourceTree = "<group>"; };
+		2C7B4C1F1EC9B4F90078DC59 /* Common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = Common.c; path = ../libModernAVC/src/Common.c; sourceTree = "<group>"; };
+		2C7B4C211EC9B5060078DC59 /* EncodeAVC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = EncodeAVC.c; path = ../libModernAVC/src/Encode/EncodeAVC.c; sourceTree = "<group>"; };
+		2C7B4C231EC9B5160078DC59 /* DecodeAVC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DecodeAVC.c; path = ../libModernAVC/src/Decode/DecodeAVC.c; sourceTree = "<group>"; };
+		2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DecodeMacroBlock.c; path = ../libModernAVC/src/Decode/DecodeMacroBlock.c; sourceTree = "<group>"; };
+		2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DecodeSlice.c; path = ../libModernAVC/src/Decode/DecodeSlice.c; sourceTree = "<group>"; };
+		2C7B4C261EC9B5160078DC59 /* DemuxAVCFile.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = DemuxAVCFile.c; path = ../libModernAVC/src/Decode/DemuxAVCFile.c; sourceTree = "<group>"; };
+		2C7B4C271EC9B5160078DC59 /* ParseNAL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ParseNAL.c; path = ../libModernAVC/src/Decode/ParseNAL.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2C16FCF11DDF8EE100E72D7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C03FC801E850CDC0075BA8C /* libBitIO.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B4BFF1EC9B1AB0078DC59 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B4C0C1EC9B44A0078DC59 /* libModernAVC.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2C03FC761E850CA60075BA8C /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */,
+			);
+			name = Dependencies;
+			sourceTree = "<group>";
+		};
+		2C03FC781E850CC40075BA8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C03FC7F1E850CC40075BA8C /* libBitIO.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C16FCEB1DDF8EE100E72D7F = {
+			isa = PBXGroup;
+			children = (
+				2C03FC761E850CA60075BA8C /* Dependencies */,
+				2C7B4BFA1EC9B15F0078DC59 /* libModernAVC */,
+				2C7B4BFC1EC9B1690078DC59 /* ModernAVC */,
+				2C16FCF51DDF8EE100E72D7F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2C16FCF51DDF8EE100E72D7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */,
+				2C7B4C021EC9B1AB0078DC59 /* ModernAVC */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2C16FCFB1DDF8EF500E72D7F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B4C1F1EC9B4F90078DC59 /* Common.c */,
+				2C1ED45B1E20BBC000115556 /* Encode */,
+				2C1ED45A1E20BB8200115556 /* Decode */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		2C16FCFC1DDF8EFC00E72D7F /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B4C0D1EC9B4AF0078DC59 /* Common.h */,
+				2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */,
+				2C7B4C0F1EC9B4AF0078DC59 /* ModernAVCTypes.h */,
+				2C7B4C101EC9B4AF0078DC59 /* Tables.h */,
+				2C1ED4591E20BB6F00115556 /* Encoder */,
+				2C1ED4581E20BB5400115556 /* Decoder */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		2C1ED4581E20BB5400115556 /* Decoder */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B4C151EC9B4C90078DC59 /* DecodeAVC.h */,
+				2C7B4C161EC9B4C90078DC59 /* DecodeMacroBlock.h */,
+				2C7B4C171EC9B4C90078DC59 /* DecodeSlice.h */,
+				2C7B4C181EC9B4C90078DC59 /* ParseNAL.h */,
+			);
+			name = Decoder;
+			sourceTree = "<group>";
+		};
+		2C1ED4591E20BB6F00115556 /* Encoder */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B4C1D1EC9B4DF0078DC59 /* EncodeAVC.h */,
+			);
+			name = Encoder;
+			sourceTree = "<group>";
+		};
+		2C1ED45A1E20BB8200115556 /* Decode */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B4C231EC9B5160078DC59 /* DecodeAVC.c */,
+				2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */,
+				2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */,
+				2C7B4C261EC9B5160078DC59 /* DemuxAVCFile.c */,
+				2C7B4C271EC9B5160078DC59 /* ParseNAL.c */,
+			);
+			name = Decode;
+			sourceTree = "<group>";
+		};
+		2C1ED45B1E20BBC000115556 /* Encode */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B4C211EC9B5060078DC59 /* EncodeAVC.c */,
+			);
+			name = Encode;
+			sourceTree = "<group>";
+		};
+		2C7B4BFA1EC9B15F0078DC59 /* libModernAVC */ = {
+			isa = PBXGroup;
+			children = (
+				2C16FCFC1DDF8EFC00E72D7F /* Headers */,
+				2C16FCFB1DDF8EF500E72D7F /* Source */,
+			);
+			name = libModernAVC;
+			sourceTree = "<group>";
+		};
+		2C7B4BFC1EC9B1690078DC59 /* ModernAVC */ = {
+			isa = PBXGroup;
+			children = (
+				2C7B4C0A1EC9B22B0078DC59 /* ModernAVC.c */,
+			);
+			name = ModernAVC;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2C16FCF21DDF8EE100E72D7F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B4C1E1EC9B4DF0078DC59 /* EncodeAVC.h in Headers */,
+				2C7B4C1C1EC9B4C90078DC59 /* ParseNAL.h in Headers */,
+				2C7B4C191EC9B4C90078DC59 /* DecodeAVC.h in Headers */,
+				2C7B4C141EC9B4AF0078DC59 /* Tables.h in Headers */,
+				2C7B4C1A1EC9B4C90078DC59 /* DecodeMacroBlock.h in Headers */,
+				2C7B4C121EC9B4AF0078DC59 /* libModernAVC.h in Headers */,
+				2C7B4C1B1EC9B4C90078DC59 /* DecodeSlice.h in Headers */,
+				2C7B4C111EC9B4AF0078DC59 /* Common.h in Headers */,
+				2C7B4C131EC9B4AF0078DC59 /* ModernAVCTypes.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2C16FCF31DDF8EE100E72D7F /* libModernAVC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C16FCF81DDF8EE100E72D7F /* Build configuration list for PBXNativeTarget "libModernAVC" */;
+			buildPhases = (
+				2C16FCF01DDF8EE100E72D7F /* Sources */,
+				2C16FCF11DDF8EE100E72D7F /* Frameworks */,
+				2C16FCF21DDF8EE100E72D7F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libModernAVC;
+			productName = libAVC;
+			productReference = 2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2C7B4C011EC9B1AB0078DC59 /* ModernAVC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7B4C061EC9B1AB0078DC59 /* Build configuration list for PBXNativeTarget "ModernAVC" */;
+			buildPhases = (
+				2C7B4BFE1EC9B1AB0078DC59 /* Sources */,
+				2C7B4BFF1EC9B1AB0078DC59 /* Frameworks */,
+				2C7B4C001EC9B1AB0078DC59 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ModernAVC;
+			productName = AVC;
+			productReference = 2C7B4C021EC9B1AB0078DC59 /* ModernAVC */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2C16FCEC1DDF8EE100E72D7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Marcus Johnson";
+				TargetAttributes = {
+					2C16FCF31DDF8EE100E72D7F = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
+					2C7B4C011EC9B1AB0078DC59 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 628J9L7WK5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2C16FCEF1DDF8EE100E72D7F /* Build configuration list for PBXProject "libAVC" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2C16FCEB1DDF8EE100E72D7F;
+			productRefGroup = 2C16FCF51DDF8EE100E72D7F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2C03FC781E850CC40075BA8C /* Products */;
+					ProjectRef = 2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				2C16FCF31DDF8EE100E72D7F /* libModernAVC */,
+				2C7B4C011EC9B1AB0078DC59 /* ModernAVC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2C03FC7F1E850CC40075BA8C /* libBitIO.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBitIO.a;
+			remoteRef = 2C03FC7E1E850CC40075BA8C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2C16FCF01DDF8EE100E72D7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B4C201EC9B4F90078DC59 /* Common.c in Sources */,
+				2C7B4C281EC9B5160078DC59 /* DecodeAVC.c in Sources */,
+				2C7B4C2B1EC9B5160078DC59 /* DemuxAVCFile.c in Sources */,
+				2C7B4C2C1EC9B5160078DC59 /* ParseNAL.c in Sources */,
+				2C7B4C221EC9B5060078DC59 /* EncodeAVC.c in Sources */,
+				2C7B4C2A1EC9B5160078DC59 /* DecodeSlice.c in Sources */,
+				2C7B4C291EC9B5160078DC59 /* DecodeMacroBlock.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7B4BFE1EC9B1AB0078DC59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C7B4C0B1EC9B22B0078DC59 /* ModernAVC.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2C16FCF61DDF8EE100E72D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2C16FCF71DDF8EE100E72D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		2C16FCF91DDF8EE100E72D7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+			};
+			name = Debug;
+		};
+		2C16FCFA1DDF8EE100E72D7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = "";
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+			};
+			name = Release;
+		};
+		2C7B4C071EC9B1AB0078DC59 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 628J9L7WK5;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2C7B4C081EC9B1AB0078DC59 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 628J9L7WK5;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C16FCEF1DDF8EE100E72D7F /* Build configuration list for PBXProject "libAVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C16FCF61DDF8EE100E72D7F /* Debug */,
+				2C16FCF71DDF8EE100E72D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C16FCF81DDF8EE100E72D7F /* Build configuration list for PBXNativeTarget "libModernAVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C16FCF91DDF8EE100E72D7F /* Debug */,
+				2C16FCFA1DDF8EE100E72D7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7B4C061EC9B1AB0078DC59 /* Build configuration list for PBXNativeTarget "ModernAVC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7B4C071EC9B1AB0078DC59 /* Debug */,
+				2C7B4C081EC9B1AB0078DC59 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2C16FCEC1DDF8EE100E72D7F /* Project object */;
+}
