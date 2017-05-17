@@ -161,58 +161,21 @@ extern "C" {
         double High;
     } Probability;
     
-    /*
-     Probabilities FindProbabilityFromSymbol(Probabilities *Probability, double *MaximumTable, double *MinimumTable, size_t TableSize, uint64_t Symbol2Lookup) {
-     if (Symbol2Lookup > TableSize) {
-     // Not good.
-     } else {
-     Probability->Maximum = MaximumTable[Symbol2Lookup];
-     Probability->Minimum = MinimumTable[Symbol2Lookup];
-     }
-     return *Probability;
-     }
-     
-     uint64_t ReadArithmetic(BitBnput *Input, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
-     // Read a bit at a time.
-     double High = 1.0, Low = 0.0; // Decimal point is implied before the highest bit.
-     return 0;
-     }
-     
-     void WriteArithmetic(BitBuffer *BitB, double *ProbabilityTable[], size_t TableSize, uint64_t Bits2Encode) { // Use the least precision you can get away with to be as efficent as possible.
-     uint64_t High = 0xFFFFFFFFFFFFFFFFULL, Low = 0ULL, Range = 0ULL, Probability = 0ULL;
-     while ((Bits2Encode >= High) && (Bits2Encode <= Low)) {
-     Range = (High - Low) + 1;
-     Probability = ProbabilityTable[Range]; // Probability should be an int table ordered on how often a symbol shows up, not it's quantized probability.
-     
-     }
-     }
-     
-     // Create a function to lookup the symbol from the probabilities
-     uint16_t FindSymbolFromProbability(double Probability, uint64_t	*MaximumTable, uint64_t *MinimumTable, size_t TableSize) {
-     uint16_t Symbol = 0; // there is a SINGLE probability, not two...
-     // If the probability is closer to 1 than 0, start the loop at 1, instead of 0. otherwise, start it at 0. to ensure it takes half the time to traverse it.
-     
-     bool WhichEnd = round(Probability);
-     
-     if (WhichEnd == 0) {
-     for (uint64_t Index = 0; Index < TableSize; Index++) {
-     uint64_t MaxProb   = MaximumTable[Index];
-     uint64_t MinProb   = MinimumTable[Index];
-     if ((Probability  >= MinProb) && (Probability <= MaxProb)) { // You found the symbol!
-     Symbol = Index;
-     }
-     }
-     } else {
-     for (uint64_t Index = TableSize; Index > 0; Index--) {
-     uint64_t MaxProb   = MaximumTable[Index];
-     uint64_t MinProb   = MinimumTable[Index];
-     if ((Probability  >= MinProb) && (Probability <= MaxProb)) { // You found the symbol!
-     Symbol = Index;
-     }
-     }
-     }
-     return Symbol;
-     }
+    
+    uint64_t ReadArithmetic(BitBnput *Input, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
+        // Read a bit at a time.
+        double High = 1.0, Low = 0.0; // Decimal point is implied before the highest bit.
+        return 0;
+    }
+    
+    void WriteArithmetic(BitBuffer *BitB, double *ProbabilityTable[], size_t TableSize, uint64_t Bits2Encode) { // Use the least precision you can get away with to be as efficent as possible.
+        uint64_t High = 0xFFFFFFFFFFFFFFFFULL, Low = 0ULL, Range = 0ULL, Probability = 0ULL;
+        while ((Bits2Encode >= High) && (Bits2Encode <= Low)) {
+            Range = (High - Low) + 1;
+            Probability = ProbabilityTable[Range]; // Probability should be an int table ordered on how often a symbol shows up, not it's quantized probability.
+            
+        }
+    }
      */
     
     void rbsp_slice_trailing_bits(DecodeAVC *Dec, BitBuffer *BitB) {

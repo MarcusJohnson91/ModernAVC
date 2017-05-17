@@ -326,10 +326,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7B4C2C1EC9B5160078DC59 /* ParseNAL.c in Sources */,
 				2CC7A91C1ECC203F00CB92AD /* DecodeAVCCommon.c in Sources */,
 				2C7B4C281EC9B5160078DC59 /* DecodeAVC.c in Sources */,
 				2CC7A91E1ECC207A00CB92AD /* EncodeAVCCommon.c in Sources */,
-				2C7B4C2C1EC9B5160078DC59 /* ParseNAL.c in Sources */,
 				2C7B4C221EC9B5060078DC59 /* EncodeAVC.c in Sources */,
 				2C7B4C2A1EC9B5160078DC59 /* DecodeSlice.c in Sources */,
 				2C7B4C291EC9B5160078DC59 /* DecodeMacroBlock.c in Sources */,

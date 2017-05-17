@@ -126,7 +126,7 @@ extern "C" {
         if ((Enc->PPS->SliceGroups == 1) &&
             (Enc->PPS->SliceGroupMapType == 3) ||
             (Enc->PPS->SliceGroupMapType == 4) ||
-            (Enc->PPS->SliceGroupMapType == 5))) {
+            (Enc->PPS->SliceGroupMapType == 5)) {
             if (Enc->PPS->SliceGroupMapType == 3) {
                 if (Enc->PPS->SliceGroupChangeDirection == false) {
                     return BoxOutClockwise;
