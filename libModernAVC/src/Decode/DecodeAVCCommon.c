@@ -301,13 +301,13 @@ extern "C" {
     }
     
     uint64_t NextMacroBlockAddress(DecodeAVC *Dec, uint64_t CurrentMacroBlockAddress) { // NextMbAddress
-        while (CurrentMacroBlockAddress + 1 < Dec->Slice->PicSizeInMacroBlocks && MacroBlock2SliceGroupMap(AVC, CurrentMacroBlockAddress + 1) != MacroBlock2SliceGroupMap(AVC, CurrentMacroBlockAddress)) {
+        while (CurrentMacroBlockAddress + 1 < Dec->Slice->PicSizeInMacroBlocks && MacroBlock2SliceGroupMap(Dec, CurrentMacroBlockAddress + 1) != MacroBlock2SliceGroupMap(Dec, CurrentMacroBlockAddress)) {
             i++; nextMbAddress = I
         }
         
         // aka
         for (uint64_t I = CurrentMacroBlockAddress + 1; I < Dec->Slice->PicSizeInMacroBlocks && MbToSliceGroups[I]) {
-            MacroBlock2SliceGroupMap(AVC, CurrentMacroBlockAddress);
+            MacroBlock2SliceGroupMap(Dec, CurrentMacroBlockAddress);
         }
     }
     
