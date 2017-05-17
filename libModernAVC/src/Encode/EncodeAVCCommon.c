@@ -84,19 +84,19 @@ extern "C" {
     
     void ResidualLuma(EncodeAVC *Enc, BitBuffer *BitB, int i16x16DClevel, int i16x16AClevel, int level4x4,
                       int level8x8, int startIdx, int endIdx) { // residual_luma
-        if (startIdx == 0 && MbPartPredMode(mb_type, 0) == Intra_16x16) {
+        if (startIdx == 0 && MbPartPredMode(Enc->MacroBlock->Type, 0) == Intra_16x16) {
             residual_block(i16x16DClevel, 0, 15, 16);
         }
         for (uint8_t i8x8 = 0; i8x8 < 4; i8x8++) {
             if (Enc->MacroBlock->TransformSizeIs8x8 == false || Enc->PPS->EntropyCodingMode == ExpGolomb) {
                 for (uint8_t i4x4 = 0; i4x4 < 4; i4x4++) {
                     if (Enc->MacroBlock->BlockPatternLuma & (1 << i8x8)) {
-                        if (MbPartPredMode(mb_type, 0) == Intra_16x16) {
+                        if (MbPartPredMode(Enc->MacroBlock->Type, 0) == Intra_16x16) {
                             residual_block(i16x16AClevel[i8x8 * 4 + i4x4], Max(0, startIdx - 1), endIdx - 1, 15);
                         } else {
                             residual_block(level4x4[i8x8 * 4 + i4x4], startIdx, endIdx, 16);
                         }
-                    } else if (MbPartPredMode(mb_type, 0) == Intra_16x16) {
+                    } else if (MbPartPredMode(Enc->MacroBlock->Type, 0) == Intra_16x16) {
                         for (uint8_t i = 0; i < 15; i++) {
                             i16x16AClevel[i8x8 * 4 + i4x4][i] = 0;
                         }

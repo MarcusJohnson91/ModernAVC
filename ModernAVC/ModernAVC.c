@@ -52,7 +52,7 @@ extern "C" {
         SetCMDSwitchFlag(CMD, 3, "Decode", 6);
         SetCMDSwitchDescription(CMD, 3, "Decode AVC to output");
         SetCMDSwitchResultStatus(CMD, 3, false);
-        
+        /* Start Encode options */
         SetCMDSwitchFlag(CMD, 4, "Bitrate", 7);
         SetCMDSwitchDescription(CMD, 4, "Target bitrate for the produced AVC file, supported postfixes: MBps, KBps (mega bits, kilo bits (1024))");
         SetCMDSwitchResultStatus(CMD, 4, true);
@@ -76,6 +76,18 @@ extern "C" {
         SetCMDSwitchFlag(CMD, 9, "Lossless", 8);
         SetCMDSwitchDescription(CMD, 9, "Encode the AVC file losslessly and only uses lossless color transforms like YCgCo");
         SetCMDSwitchResultStatus(CMD, 9, false);
+        /* End encode options */
+        
+        /* Start Decode options */
+        // We need an option to extract a frame from a certain frame number or timestamp, if timestamp we'll default to grabbing the highest quality frame as close to the time stamp as possible.
+        
+        // We need an option to remove frames
+        /* End Decode options */
+        
+        // in BitIO, we should add dependent options, for example -Lossless is only available when encoding, because it makes no sense otherwise.
+        
+        // That means that the user needs to specify -Encode or -Decode before their options on the CLI
+        // but the input/output options can go anywhere
         
         SetCMDSwitchFlag(CMD, 10, "Help", 4);
         SetCMDSwitchDescription(CMD, 10, "Prints all the command line options");
