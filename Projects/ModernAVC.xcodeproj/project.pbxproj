@@ -133,8 +133,8 @@
 		2C16FCFB1DDF8EF500E72D7F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				2C1ED45B1E20BBC000115556 /* Encode */,
-				2C1ED45A1E20BB8200115556 /* Decode */,
+				2C1ED45B1E20BBC000115556 /* Encoder */,
+				2C1ED45A1E20BB8200115556 /* Decoder */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 			name = Encoder;
 			sourceTree = "<group>";
 		};
-		2C1ED45A1E20BB8200115556 /* Decode */ = {
+		2C1ED45A1E20BB8200115556 /* Decoder */ = {
 			isa = PBXGroup;
 			children = (
 				2CC7A91B1ECC203F00CB92AD /* DecodeAVCCommon.c */,
@@ -181,16 +181,16 @@
 				2C7B4C251EC9B5160078DC59 /* DecodeSlice.c */,
 				2C7B4C241EC9B5160078DC59 /* DecodeMacroBlock.c */,
 			);
-			name = Decode;
+			name = Decoder;
 			sourceTree = "<group>";
 		};
-		2C1ED45B1E20BBC000115556 /* Encode */ = {
+		2C1ED45B1E20BBC000115556 /* Encoder */ = {
 			isa = PBXGroup;
 			children = (
 				2CC7A91D1ECC207A00CB92AD /* EncodeAVCCommon.c */,
 				2C7B4C211EC9B5060078DC59 /* EncodeAVC.c */,
 			);
-			name = Encode;
+			name = Encoder;
 			sourceTree = "<group>";
 		};
 		2C7B4BFA1EC9B15F0078DC59 /* libModernAVC */ = {

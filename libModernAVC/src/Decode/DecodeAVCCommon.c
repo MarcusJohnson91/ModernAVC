@@ -351,26 +351,31 @@ extern "C" {
         return 0;
     }
     
-    EncodeAVC *InitAVCEncoder(void) {
-        errno = 0;
-        EncodeAVC *Enc                = (EncodeAVC*) calloc(1, sizeof(EncodeAVC));
-        if (errno != 0) {
-            const char ErrnoError[128];
-            strerror_r(errno, ErrnoError, 128);
-            Log(LOG_ERR, "libModernAVC", "InitAVCEncoder", "Errno error: %s", ErrnoError);
-        } else {
-            Enc->NAL                  = (NALHeader*)                    calloc(1, sizeof(NALHeader));
-            Enc->SPS                  = (SequenceParameterSet*)         calloc(1, sizeof(SequenceParameterSet));
-            Enc->PPS                  = (PictureParameterSet*)          calloc(1, sizeof(PictureParameterSet));
-            Enc->VUI                  = (VideoUsabilityInformation*)    calloc(1, sizeof(VideoUsabilityInformation));
-            Enc->HRD                  = (HypotheticalReferenceDecoder*) calloc(1, sizeof(HypotheticalReferenceDecoder));
-            Enc->SEI                  = (SupplementalEnhancementInfo*)  calloc(1, sizeof(SupplementalEnhancementInfo));
-            Enc->Slice                = (Slice*)                        calloc(1, sizeof(Slice));
-            Enc->SVC                  = (ScalableVideoCoding*)          calloc(1, sizeof(ScalableVideoCoding));
-            Enc->DPS                  = (DepthParameterSet*)            calloc(1, sizeof(DepthParameterSet));
-            Enc->MacroBlock           = (MacroBlock*)                   calloc(1, sizeof(MacroBlock));
+    bool InCropWindow(DecodeAVC *Dec, uint64_t MacroBlockAddress) { // mbAddr
+        uint64_t mbX     = ((MacroBlockAddress / (1 + Dec->Slice->MbaffFrameFlag)) % Dec->Slice->PicWidthInMacroBlocks);
+        uint64_t mbY0    = 0;
+        uint64_t mbY1    = 0;
+        uint8_t  scalMbH  = 0; // Max = 32
+        bool     Status   = 0;
+        
+        Dec->Slice->ScaledRefLayerPicHeightInSamplesL = Dec->Slice->PicHeightInMacroBlocks * 16 − (Dec->Slice->ScaledRefLayerTopOffset + Dec->Slice->ScaledRefLayerBottomOffset) / (1 + Dec->Slice->SliceIsInterlaced);
+        
+        if (Dec->Slice->MbaffFrameFlag == false) {
+            mbY0 = (MacroBlockAddress / Dec->Slice->PicWidthInMacroBlocks);
+            mbY1 = (MacroBlockAddress / Dec->Slice->PicWidthInMacroBlocks);
+        } else if (Dec->Slice->MbaffFrameFlag == true) {
+            mbY0 = (2 * ((MacroBlockAddress / Dec->Slice->PicWidthInMacroBlocks) / 2));
+            mbY1 = mbY0 + 1;
         }
-        return Enc;
+        scalMbH = (16 * (1 + Dec->Slice->SliceIsInterlaced));
+        
+        if (Dec->NAL->NoInterLayerPredictionFlag == true && (mbX >= ((Dec->Slice->ScaledRefLayerLeftOffset + 15) / 16) && mbX < ((Dec->Slice->ScaledRefLayerLeftOffset + ScaledRefLayerPicWidthInSamplesL) / 16)) && mbY0 >= ((Dec->Slice->ScaledRefLayerTopOffset + scalMbH − 1) / scalMbH) && mbY1 < ((Dec->Slice->ScaledRefLayerTopOffset + Dec->Slice->ScaledRefLayerPicHeightInSamplesL) / scalMbH)) {
+            Status = true;
+        } else {
+            Status = false;
+        }
+        
+        return Status;
     }
     
     DecodeAVC *InitAVCDecoder(void) {

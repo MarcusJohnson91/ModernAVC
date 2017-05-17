@@ -373,28 +373,6 @@ extern "C" {
         return Enc;
     }
     
-    DecodeAVC *InitAVCDecoder(void) {
-        errno = 0;
-        DecodeAVC *Dec                = (DecodeAVC*) calloc(1, sizeof(DecodeAVC));
-        if (errno != 0) {
-            const char ErrnoError[128];
-            strerror_r(errno, ErrnoError, 128);
-            Log(LOG_ERR, "libModernAVC", "InitAVCDecoder", "Errno error: %s", ErrnoError);
-        } else {
-            Dec->NAL                  = (NALHeader*)                    calloc(1, sizeof(NALHeader));
-            Dec->SPS                  = (SequenceParameterSet*)         calloc(1, sizeof(SequenceParameterSet));
-            Dec->PPS                  = (PictureParameterSet*)          calloc(1, sizeof(PictureParameterSet));
-            Dec->VUI                  = (VideoUsabilityInformation*)    calloc(1, sizeof(VideoUsabilityInformation));
-            Dec->HRD                  = (HypotheticalReferenceDecoder*) calloc(1, sizeof(HypotheticalReferenceDecoder));
-            Dec->SEI                  = (SupplementalEnhancementInfo*)  calloc(1, sizeof(SupplementalEnhancementInfo));
-            Dec->Slice                = (Slice*)                        calloc(1, sizeof(Slice));
-            Dec->SVC                  = (ScalableVideoCoding*)          calloc(1, sizeof(ScalableVideoCoding));
-            Dec->DPS                  = (DepthParameterSet*)            calloc(1, sizeof(DepthParameterSet));
-            Dec->MacroBlock           = (MacroBlock*)                   calloc(1, sizeof(MacroBlock));
-        }
-        return Dec;
-    }
-    
 #ifdef __cplusplus
 }
 #endif

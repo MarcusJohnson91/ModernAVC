@@ -45,6 +45,8 @@ extern "C" {
     
     uint8_t  CalculateNumberOfTimeStamps(DecodeAVC *Dec);
     
+    bool     InCropWindow(DecodeAVC *Dec, uint64_t MacroBlockAddress);
+    
 #ifdef __cplusplus
 }
 #endif
