@@ -45,53 +45,61 @@ extern "C" {
         SetCMDSwitchDescription(CMD, 1, "Output file or stdout with: -");
         SetCMDSwitchResultStatus(CMD, 1, true);
         
+        /* Start Encode options */
         SetCMDSwitchFlag(CMD, 2, "Encode", 6);
         SetCMDSwitchDescription(CMD, 2, "Encode input to AVC");
         SetCMDSwitchResultStatus(CMD, 2, false);
         
-        SetCMDSwitchFlag(CMD, 3, "Decode", 6);
-        SetCMDSwitchDescription(CMD, 3, "Decode AVC to output");
-        SetCMDSwitchResultStatus(CMD, 3, false);
-        /* Start Encode options */
-        SetCMDSwitchFlag(CMD, 4, "Bitrate", 7);
-        SetCMDSwitchDescription(CMD, 4, "Target bitrate for the produced AVC file, supported postfixes: MBps, KBps (mega bits, kilo bits (1024))");
+        SetCMDSwitchFlag(CMD, 3, "Bitrate", 7);
+        SetCMDSwitchDescription(CMD, 3, "Target bitrate for the produced AVC file, supported postfixes: MBps, KBps (mega bits, kilo bits (1024))");
+        SetCMDSwitchResultStatus(CMD, 3, true);
+        SetCMDSwitchDependency(CMD, 3, 2);
+        
+        SetCMDSwitchFlag(CMD, 4, "Subsample", 9);
+        SetCMDSwitchDescription(CMD, 4, "Should the produced AVC file use chroma subsampling? if so, what type");
         SetCMDSwitchResultStatus(CMD, 4, true);
+        SetCMDSwitchDependency(CMD, 4, 2);
         
-        SetCMDSwitchFlag(CMD, 5, "Subsample", 9);
-        SetCMDSwitchDescription(CMD, 5, "Should the produced AVC file use chroma subsampling? if so, what type");
+        SetCMDSwitchFlag(CMD, 5, "Framerate", 9);
+        SetCMDSwitchDescription(CMD, 5, "the framerate of the movie, for decimal fpses, use fractional notation IE: 24000/1001");
         SetCMDSwitchResultStatus(CMD, 5, true);
+        SetCMDSwitchDependency(CMD, 5, 2);
         
-        SetCMDSwitchFlag(CMD, 6, "Framerate", 9);
-        SetCMDSwitchDescription(CMD, 6, "the framerate of the movie, for decimal fpses, use fractional notation IE: 24000/1001");
+        SetCMDSwitchFlag(CMD, 6, "Profile", 9);
+        SetCMDSwitchDescription(CMD, 6, "the level to encode the movie with, E.G.: 5.2");
         SetCMDSwitchResultStatus(CMD, 6, true);
+        SetCMDSwitchDependency(CMD, 6, 2);
         
-        SetCMDSwitchFlag(CMD, 7, "Profile", 9);
-        SetCMDSwitchDescription(CMD, 7, "the level to encode the movie with, IE: 5.2");
-        SetCMDSwitchResultStatus(CMD, 7, true);
+        SetCMDSwitchFlag(CMD, 7, "Interlace", 9);
+        SetCMDSwitchDescription(CMD, 7, "Should the movie be interlaced?");
+        SetCMDSwitchResultStatus(CMD, 7, false);
+        SetCMDSwitchDependency(CMD, 7, 2);
         
-        SetCMDSwitchFlag(CMD, 8, "Interlace", 9);
-        SetCMDSwitchDescription(CMD, 8, "Should the movie be interlaced?");
+        SetCMDSwitchFlag(CMD, 8, "Lossless", 8);
+        SetCMDSwitchDescription(CMD, 8, "Encode the AVC file losslessly and only uses lossless color transforms like YCgCo");
         SetCMDSwitchResultStatus(CMD, 8, false);
-        
-        SetCMDSwitchFlag(CMD, 9, "Lossless", 8);
-        SetCMDSwitchDescription(CMD, 9, "Encode the AVC file losslessly and only uses lossless color transforms like YCgCo");
-        SetCMDSwitchResultStatus(CMD, 9, false);
+        SetCMDSwitchDependency(CMD, 8, 2);
         /* End encode options */
         
         /* Start Decode options */
-        // We need an option to extract a frame from a certain frame number or timestamp, if timestamp we'll default to grabbing the highest quality frame as close to the time stamp as possible.
+        SetCMDSwitchFlag(CMD, 9, "Decode", 6);
+        SetCMDSwitchDescription(CMD, 9, "Decode AVC to output");
+        SetCMDSwitchResultStatus(CMD, 9, false);
         
-        // We need an option to remove frames
+        SetCMDSwitchFlag(CMD, 10, "ExtractFrame", 6);
+        SetCMDSwitchDescription(CMD, 10, "Extracts frame (frame number, or timestamp in HH:MM:SS:Frame format)");
+        SetCMDSwitchResultStatus(CMD, 10, false);
+        SetCMDSwitchDependency(CMD, 10, 9);
+        
+        SetCMDSwitchFlag(CMD, 11, "TrimFrames", 6);
+        SetCMDSwitchDescription(CMD, 11, "Removes frames in format FirstFrame..LastFrame (Where Frame is either the frame numbers, or a timestamp in HH:MM:SS:Frame format)");
+        SetCMDSwitchResultStatus(CMD, 11, false);
+        SetCMDSwitchDependency(CMD, 11, 9);
         /* End Decode options */
         
-        // in BitIO, we should add dependent options, for example -Lossless is only available when encoding, because it makes no sense otherwise.
-        
-        // That means that the user needs to specify -Encode or -Decode before their options on the CLI
-        // but the input/output options can go anywhere
-        
-        SetCMDSwitchFlag(CMD, 10, "Help", 4);
-        SetCMDSwitchDescription(CMD, 10, "Prints all the command line options");
-        SetCMDSwitchResultStatus(CMD, 10, false);
+        SetCMDSwitchFlag(CMD, 12, "Help", 4);
+        SetCMDSwitchDescription(CMD, 12, "Prints all the command line options");
+        SetCMDSwitchResultStatus(CMD, 12, false);
         
         return CMD;
     }
