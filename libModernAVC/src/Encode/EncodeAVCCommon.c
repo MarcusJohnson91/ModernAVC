@@ -147,9 +147,7 @@ extern "C" {
                 }
             }
         }
-        char Description[BitBOStringSize];
-        snprintf(Description, BitBOStringSize, "SliceGroups: %hhu, SliceGroupMapType: %d", Enc->PPS->SliceGroups, Enc->PPS->SliceGroupMapType);
-        Log(LOG_ERR, "LibAVC", "MacroBlock2SliceGroupMap", Description);
+        Log(LOG_ERR, "libModernAVC", "MacroBlock2SliceGroupMap", "SliceGroups: %hhu, SliceGroupMapType: %d", Enc->PPS->SliceGroups, Enc->PPS->SliceGroupMapType);
         return -1; // failure
     }
     
