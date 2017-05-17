@@ -1,6 +1,6 @@
-#include "../../Dependencies/BitIO/libBitIO/include/BitIO.h"
+#include "../../../Dependencies/BitIO/libBitIO/include/BitIO.h"
 
-#include "../include/libModernAVC.h"
+#include "../../include/libModernAVC.h"
 
 #pragma once
 
@@ -11,7 +11,7 @@
 extern "C" {
 #endif
     
-    int8_t   MacroBlock2SliceGroupMap(AVCFile *AVC, uint8_t CurrentMacroBlock);
+    int8_t   MacroBlock2SliceGroupMap(EncodeAVC *Enc, uint8_t CurrentMacroBlock);
     
     int64_t  Abs(int64_t X);
     
@@ -33,17 +33,17 @@ extern "C" {
     
     int64_t  Round(double X);
     
-    bool     AreAllViewsPaired(AVCFile *AVC);
+    bool     AreAllViewsPaired(EncodeAVC *Enc);
     
-    void     rbsp_slice_trailing_bits(AVCFile *AVC, BitBuffer *BitB);
+    void     rbsp_slice_trailing_bits(EncodeAVC *Enc, BitBuffer *BitB);
     
-    uint8_t  MacroBlockPartitionPredictionMode(AVCFile *AVC, uint8_t MacroBlockType, uint8_t PartitionNumber);
+    uint8_t  MacroBlockPartitionPredictionMode(EncodeAVC *Enc, uint8_t MacroBlockType, uint8_t PartitionNumber);
     
-    uint64_t NextMacroBlockAddress(AVCFile *AVC, uint64_t CurrentMacroBlockAddress);
+    uint64_t NextMacroBlockAddress(EncodeAVC *Enc, uint64_t CurrentMacroBlockAddress);
     
     uint8_t  NumberOfSubMacroBlockPartitions();
     
-    uint8_t  CalculateNumberOfTimeStamps(AVCFile *AVC);
+    uint8_t  CalculateNumberOfTimeStamps(EncodeAVC *Enc);
     
 #ifdef __cplusplus
 }
