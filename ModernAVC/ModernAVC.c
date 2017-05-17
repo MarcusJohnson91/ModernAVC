@@ -1,5 +1,7 @@
-#include "../Dependencies/BitIO/libBitIO/include/BitIO.h"
+#include <string.h>
+#include <math.h>
 
+#include "../Dependencies/BitIO/libBitIO/include/BitIO.h"
 #include "../libModernAVC/include/libModernAVC.h"
 
 #define ModernAVCVersion "0.1.0"
@@ -7,6 +9,21 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+    
+    void ExtractAVCProfileFromCMD(CommandLineOptions *CMD) {
+        // Profile option = 7
+        const char *ProfileString = GetCMDSwitchResult(CMD, 7);
+        // Now use strsplit to get the 2 halves on either side of the decimal.
+        // then use atoi to get the digit into a number
+        
+        float Profile        = atof(ProfileString);
+        uint8_t ProfileMajor = (uint8_t)Profile;
+        uint8_t ProfileMinor = Profile - ProfileMajor;
+        /*
+        char *ProfileMajorString  = strsep(ProfileString, ".");
+        char *ProfileMinorString  = strsep(ProfileString, ".");
+         */
+    }
     
     CommandLineOptions *SetModernAVCOptions(void) {
         CommandLineOptions *CMD = InitCommandLineOptions(7);
@@ -77,11 +94,7 @@ extern "C" {
         
         ParseCommandLineArguments(CMD, argc, argv);
         
-        if (GetCMDSwitchPresence(CMD, 0)) { // Input
-            
-        } else if (GetCMDSwitchPresence(CMD, 1)) { // Output
-            
-        } else if (GetCMDSwitchPresence(CMD, 2)) { // Encode
+        if (GetCMDSwitchPresence(CMD, 2)) { // Encode
             
         } else if (GetCMDSwitchPresence(CMD, 3)) { // Decode
             
@@ -98,6 +111,12 @@ extern "C" {
         } else if (GetCMDSwitchPresence(CMD, 9)) { // Lossless
             
         } else if (GetCMDSwitchPresence(CMD, 10)) { // Help
+            
+        }
+        
+        if (GetCMDSwitchPresence(CMD, 0)) { // Input
+            
+        } else if (GetCMDSwitchPresence(CMD, 1)) { // Output
             
         }
         
