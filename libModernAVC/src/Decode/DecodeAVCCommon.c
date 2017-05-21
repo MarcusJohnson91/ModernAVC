@@ -84,19 +84,19 @@ extern "C" {
     
     void ResidualLuma(DecodeAVC *Dec, BitBuffer *BitB, int i16x16DClevel, int i16x16AClevel, int level4x4,
                       int level8x8, int startIdx, int endIdx) { // residual_luma
-        if (startIdx == 0 && MbPartPredMode(mb_type, 0) == Intra_16x16) {
+        if (startIdx == 0 && MacroBlockPartitionPredictionMode(Dec, Dec->MacroBlock->Type, 0) == Intra_16x16) {
             residual_block(i16x16DClevel, 0, 15, 16);
         }
         for (uint8_t i8x8 = 0; i8x8 < 4; i8x8++) {
             if (Dec->MacroBlock->TransformSizeIs8x8 == false || Dec->PPS->EntropyCodingMode == ExpGolomb) {
                 for (uint8_t i4x4 = 0; i4x4 < 4; i4x4++) {
                     if (Dec->MacroBlock->BlockPatternLuma & (1 << i8x8)) {
-                        if (MbPartPredMode(mb_type, 0) == Intra_16x16) {
+                        if (MacroBlockPartitionPredictionMode(Dec, Dec->MacroBlock->Type, 0) == Intra_16x16) {
                             residual_block(i16x16AClevel[i8x8 * 4 + i4x4], Max(0, startIdx - 1), endIdx - 1, 15);
                         } else {
                             residual_block(level4x4[i8x8 * 4 + i4x4], startIdx, endIdx, 16);
                         }
-                    } else if (MbPartPredMode(mb_type, 0) == Intra_16x16) {
+                    } else if (MacroBlockPartitionPredictionMode(Dec, Dec->MacroBlock->Type, 0) == Intra_16x16) {
                         for (uint8_t i = 0; i < 15; i++) {
                             i16x16AClevel[i8x8 * 4 + i4x4][i] = 0;
                         }
@@ -123,10 +123,7 @@ extern "C" {
     }
     
     int8_t MacroBlock2SliceGroupMap(DecodeAVC *Dec, uint8_t CurrentMacroBlock) { // MbToSliceGroupMap
-        if ((Dec->PPS->SliceGroups == 1) &&
-            (Dec->PPS->SliceGroupMapType == 3) ||
-            (Dec->PPS->SliceGroupMapType == 4) ||
-            (Dec->PPS->SliceGroupMapType == 5))) {
+        if (Dec->PPS->SliceGroups == 1 && (Dec->PPS->SliceGroupMapType == 3 || Dec->PPS->SliceGroupMapType == 4 || Dec->PPS->SliceGroupMapType == 5)) {
             if (Dec->PPS->SliceGroupMapType == 3) {
                 if (Dec->PPS->SliceGroupChangeDirection == false) {
                     return BoxOutClockwise;
@@ -162,7 +159,7 @@ extern "C" {
     } Probability;
     
     
-    uint64_t ReadArithmetic(BitBnput *Input, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
+    uint64_t ReadArithmetic(BitInput *Input, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
         // Read a bit at a time.
         double High = 1.0, Low = 0.0; // Decimal point is implied before the highest bit.
         return 0;
@@ -179,7 +176,7 @@ extern "C" {
      */
     
     void rbsp_slice_trailing_bits(DecodeAVC *Dec, BitBuffer *BitB) {
-        AlignInput(BitB, 1); // rbsp_trailing_bits();
+        AlignBitBuffer(BitB, 1); // rbsp_trailing_bits();
         if (Dec->PPS->EntropyCodingMode == Arithmetic) {
             while (more_rbsp_trailing_data()) {
                 Dec->PPS->CABACZeroWord = ReadBits(BitB, 16, true); /* equal to 0x0000 */
@@ -195,60 +192,60 @@ extern "C" {
         uint8_t ReturnValue = 0;
         if (MacroBlockType == 0) {
             if (Dec->MacroBlock->TransformSizeIs8x8 == true) {
-                RetunValue = Intra_8x8;
+                ReturnValue = Intra_8x8;
             } else {
                 ReturnValue = Intra_4x4;
             }
         } else if (MacroBlockType == 1) {
             ReturnValue = I_16x16_0_0_0;
         } else if (MacroBlockType == 2) {
-            ReurnValue  = I_16x16_1_0_0;
+            ReturnValue  = I_16x16_1_0_0;
         } else if (MacroBlockType == 3) {
-            ReurnValue  = I_16x16_2_0_0;
+            ReturnValue  = I_16x16_2_0_0;
         } else if (MacroBlockType == 4) {
-            ReurnValue  = I_16x16_3_0_0;
+            ReturnValue  = I_16x16_3_0_0;
         } else if (MacroBlockType == 5) {
-            ReurnValue  = I_16x16_0_1_0;
+            ReturnValue  = I_16x16_0_1_0;
         } else if (MacroBlockType == 6) {
-            ReurnValue  = I_16x16_1_1_0;
+            ReturnValue  = I_16x16_1_1_0;
         } else if (MacroBlockType == 7) {
-            ReurnValue  = I_16x16_2_1_0;
+            ReturnValue  = I_16x16_2_1_0;
         } else if (MacroBlockType == 8) {
-            ReurnValue  = I_16x16_3_1_0;
+            ReturnValue  = I_16x16_3_1_0;
         } else if (MacroBlockType == 9) {
-            ReurnValue  = I_16x16_0_2_0;
+            ReturnValue  = I_16x16_0_2_0;
         } else if (MacroBlockType == 10) {
-            ReurnValue  = I_16x16_1_2_0;
+            ReturnValue  = I_16x16_1_2_0;
         } else if (MacroBlockType == 11) {
-            ReurnValue  = I_16x16_2_2_0;
+            ReturnValue  = I_16x16_2_2_0;
         } else if (MacroBlockType == 12) {
-            ReurnValue  = I_16x16_3_2_0;
+            ReturnValue  = I_16x16_3_2_0;
         } else if (MacroBlockType == 13) {
-            ReurnValue  = I_16x16_0_0_1;
+            ReturnValue  = I_16x16_0_0_1;
         } else if (MacroBlockType == 14) {
-            ReurnValue  = I_16x16_1_0_1;
+            ReturnValue  = I_16x16_1_0_1;
         } else if (MacroBlockType == 15) {
-            ReurnValue  = I_16x16_2_0_1;
+            ReturnValue  = I_16x16_2_0_1;
         } else if (MacroBlockType == 16) {
-            ReurnValue  = I_16x16_3_0_1;
+            ReturnValue  = I_16x16_3_0_1;
         } else if (MacroBlockType == 17) {
-            ReurnValue  = I_16x16_0_1_1;
+            ReturnValue  = I_16x16_0_1_1;
         } else if (MacroBlockType == 18) {
-            ReurnValue  = I_16x16_1_1_1;
+            ReturnValue  = I_16x16_1_1_1;
         } else if (MacroBlockType == 19) {
-            ReurnValue  = I_16x16_2_1_1;
+            ReturnValue  = I_16x16_2_1_1;
         } else if (MacroBlockType == 20) {
-            ReurnValue  = I_16x16_3_1_1;
+            ReturnValue  = I_16x16_3_1_1;
         } else if (MacroBlockType == 21) {
-            ReurnValue  = I_16x16_0_2_1;
+            ReturnValue  = I_16x16_0_2_1;
         } else if (MacroBlockType == 22) {
-            ReurnValue  = I_16x16_1_2_1;
+            ReturnValue  = I_16x16_1_2_1;
         } else if (MacroBlockType == 23) {
-            ReurnValue  = I_16x16_2_2_1;
+            ReturnValue  = I_16x16_2_2_1;
         } else if (MacroBlockType == 24) {
-            ReurnValue  = I_16x16_3_2_1;
+            ReturnValue  = I_16x16_3_2_1;
         } else if (MacroBlockType == 25) {
-            ReurnValue  = I_PCM;
+            ReturnValue  = I_PCM;
         }
         /*
          if (NotPartitioned == true) {
