@@ -452,6 +452,11 @@
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				LLVM_LTO = YES_THIN;
+				OTHER_CFLAGS = (
+					"-ferror-limit=1024",
+					"-Wall",
+					"-pedantic",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 			};
@@ -465,6 +470,11 @@
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				LLVM_LTO = YES_THIN;
+				OTHER_CFLAGS = (
+					"-ferror-limit=1024",
+					"-Wall",
+					"-pedantic",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
 			};

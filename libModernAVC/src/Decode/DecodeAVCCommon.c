@@ -158,7 +158,6 @@ extern "C" {
         double High;
     } Probability;
     
-    
     uint64_t ReadArithmetic(BitInput *Input, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
         // Read a bit at a time.
         double High = 1.0, Low = 0.0; // Decimal point is implied before the highest bit.
@@ -173,7 +172,6 @@ extern "C" {
             
         }
     }
-     */
     
     void rbsp_slice_trailing_bits(DecodeAVC *Dec, BitBuffer *BitB) {
         AlignBitBuffer(BitB, 1); // rbsp_trailing_bits();
@@ -278,11 +276,11 @@ extern "C" {
             IsDirectFlag = true;
         }
         
-        if (isDirectFlag == true && DQID == 0 && nal_unit_type != NAL_AuxiliarySliceExtension) {
+        if (IsDirectFlag == true && DQID == 0 && nal_unit_type != NAL_AuxiliarySliceExtension) {
             return 4;
-        } else if (isDirectFlag == true && DQID > 0 && nal_unit_type == NAL_AuxiliarySliceExtension) {
+        } else if (IsDirectFlag == true && DQID > 0 && nal_unit_type == NAL_AuxiliarySliceExtension) {
             return 1;
-        } else if (isDirectFlag == 0) {
+        } else if (IsDirectFlag == 0) {
             return NumSubMbPart(subMbType[CurrMbAddr][mbPartIdx]);
         }
     }
@@ -316,7 +314,7 @@ extern "C" {
         uint8_t  scalMbH  = 0; // Max = 32
         bool     Status   = 0;
         
-        Dec->Slice->ScaledRefLayerPicHeightInSamplesL = Dec->Slice->PicHeightInMacroBlocks * 16 − (Dec->Slice->ScaledRefLayerTopOffset + Dec->Slice->ScaledRefLayerBottomOffset) / (1 + Dec->Slice->SliceIsInterlaced);
+        Dec->Slice->ScaledRefLayerPicHeightInSamplesL = Dec->Slice->PicHeightInMacroBlocks * 16 - (Dec->Slice->ScaledRefLayerTopOffset + Dec->Slice->ScaledRefLayerBottomOffset) / (1 + Dec->Slice->SliceIsInterlaced);
         
         if (Dec->Slice->MbaffFrameFlag == false) {
             mbY0 = (MacroBlockAddress / Dec->Slice->PicWidthInMacroBlocks);
@@ -327,7 +325,7 @@ extern "C" {
         }
         scalMbH = (16 * (1 + Dec->Slice->SliceIsInterlaced));
         
-        if (Dec->NAL->NoInterLayerPredictionFlag == true && (mbX >= ((Dec->Slice->ScaledRefLayerLeftOffset + 15) / 16) && mbX < ((Dec->Slice->ScaledRefLayerLeftOffset + ScaledRefLayerPicWidthInSamplesL) / 16)) && mbY0 >= ((Dec->Slice->ScaledRefLayerTopOffset + scalMbH − 1) / scalMbH) && mbY1 < ((Dec->Slice->ScaledRefLayerTopOffset + Dec->Slice->ScaledRefLayerPicHeightInSamplesL) / scalMbH)) {
+        if (Dec->NAL->NoInterLayerPredictionFlag == true && (mbX >= ((Dec->Slice->ScaledRefLayerLeftOffset + 15) / 16) && mbX < ((Dec->Slice->ScaledRefLayerLeftOffset + ScaledRefLayerPicWidthInSamplesL) / 16)) && mbY0 >= ((Dec->Slice->ScaledRefLayerTopOffset + scalMbH - 1) / scalMbH) && mbY1 < ((Dec->Slice->ScaledRefLayerTopOffset + Dec->Slice->ScaledRefLayerPicHeightInSamplesL) / scalMbH)) {
             Status = true;
         } else {
             Status = false;
