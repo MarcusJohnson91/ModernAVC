@@ -107,6 +107,7 @@ extern "C" {
                     }
                 }
             }
+            
             if (Dec->PPS->EntropyCodingMode == ExpGolomb && Dec->MacroBlock->TransformSizeIs8x8) {
                 for (uint8_t i = 0; i < 16; i++) {
                     level8x8[i8x8][4 * i + i4x4] = level4x4[i8x8 * 4 + i4x4][i];
@@ -158,19 +159,10 @@ extern "C" {
         double High;
     } Probability;
     
-    uint64_t ReadArithmetic(BitInput *Input, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
+    uint64_t ReadArithmetic(BitBuffer *BitB, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
         // Read a bit at a time.
         double High = 1.0, Low = 0.0; // Decimal point is implied before the highest bit.
         return 0;
-    }
-    
-    void WriteArithmetic(BitBuffer *BitB, double *ProbabilityTable[], size_t TableSize, uint64_t Bits2Encode) { // Use the least precision you can get away with to be as efficent as possible.
-        uint64_t High = 0xFFFFFFFFFFFFFFFFULL, Low = 0ULL, Range = 0ULL, Probability = 0ULL;
-        while ((Bits2Encode >= High) && (Bits2Encode <= Low)) {
-            Range = (High - Low) + 1;
-            Probability = ProbabilityTable[Range]; // Probability should be an int table ordered on how often a symbol shows up, not it's quantized probability.
-            
-        }
     }
     
     void rbsp_slice_trailing_bits(DecodeAVC *Dec, BitBuffer *BitB) {
@@ -289,7 +281,7 @@ extern "C" {
         
     }
     
-    bool IsThereMoreDataInThisNAL() { // more_rbsp_data
+    bool IsThereMoreDataInThisNAL() { // more_rbsp_data, TODO: This function needs to be finished
         if (there is no more data) {
             return false;
         } else {

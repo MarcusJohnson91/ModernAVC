@@ -82,6 +82,15 @@ extern "C" {
         }
     }
     
+    void WriteArithmetic(BitBuffer *BitB, double *ProbabilityTable[], size_t TableSize, uint64_t Bits2Encode) { // Use the least precision you can get away with to be as efficent as possible.
+        uint64_t High = 0xFFFFFFFFFFFFFFFFULL, Low = 0ULL, Range = 0ULL, Probability = 0ULL;
+        while ((Bits2Encode >= High) && (Bits2Encode <= Low)) {
+            Range = (High - Low) + 1;
+            Probability = ProbabilityTable[Range]; // Probability should be an int table ordered on how often a symbol shows up, not it's quantized probability.
+            
+        }
+    }
+    
     void ResidualLuma(EncodeAVC *Enc, BitBuffer *BitB, int i16x16DClevel, int i16x16AClevel, int level4x4,
                       int level8x8, int startIdx, int endIdx) { // residual_luma
         if (startIdx == 0 && MacroBlockPartitionPredictionMode(Enc, Enc->MacroBlock->Type, 0) == Intra_16x16) {
@@ -157,32 +166,6 @@ extern "C" {
         double Low;
         double High;
     } Probability;
-    
-    /*
-     Probabilities FindProbabilityFromSymbol(Probabilities *Probability, double *MaximumTable, double *MinimumTable, size_t TableSize, uint64_t Symbol2Lookup) {
-     if (Symbol2Lookup > TableSize) {
-     // Not good.
-     } else {
-     Probability->Maximum = MaximumTable[Symbol2Lookup];
-     Probability->Minimum = MinimumTable[Symbol2Lookup];
-     }
-     return *Probability;
-     }
-     
-     uint64_t ReadArithmetic(BitBnput *Input, uint64_t *MaximumTable, uint64_t *MinimumTable, size_t TableSize, uint64_t Bits2Decode) {
-     // Read a bit at a time.
-     double High = 1.0, Low = 0.0; // Decimal point is implied before the highest bit.
-     return 0;
-     }
-     
-     void WriteArithmetic(BitBuffer *BitB, double *ProbabilityTable[], size_t TableSize, uint64_t Bits2Encode) { // Use the least precision you can get away with to be as efficent as possible.
-     uint64_t High = 0xFFFFFFFFFFFFFFFFULL, Low = 0ULL, Range = 0ULL, Probability = 0ULL;
-     while ((Bits2Encode >= High) && (Bits2Encode <= Low)) {
-     Range = (High - Low) + 1;
-     Probability = ProbabilityTable[Range]; // Probability should be an int table ordered on how often a symbol shows up, not it's quantized probability.
-     
-     }
-     }
      
      // Create a function to lookup the symbol from the probabilities
      uint16_t FindSymbolFromProbability(double Probability, uint64_t	*MaximumTable, uint64_t *MinimumTable, size_t TableSize) {
