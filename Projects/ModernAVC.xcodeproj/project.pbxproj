@@ -399,7 +399,7 @@
 					"-fvectorize",
 					"-ferror-limit=1024",
 					"-Wall",
-					"-pendantic",
+					"-pedantic",
 				);
 				SDKROOT = macosx;
 			};
@@ -451,7 +451,7 @@
 					"-fvectorize",
 					"-ferror-limit=1024",
 					"-Wall",
-					"-pendantic",
+					"-pedantic",
 				);
 				SDKROOT = macosx;
 			};
