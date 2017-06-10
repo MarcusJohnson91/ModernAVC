@@ -166,7 +166,7 @@ extern "C" {
         double Low;
         double High;
     } Probability;
-     
+     /*
      // Create a function to lookup the symbol from the probabilities
      uint16_t FindSymbolFromProbability(double Probability, uint64_t	*MaximumTable, uint64_t *MinimumTable, size_t TableSize) {
      uint16_t Symbol = 0; // there is a SINGLE probability, not two...
@@ -174,24 +174,24 @@ extern "C" {
      
      bool WhichEnd = round(Probability);
      
-     if (WhichEnd == 0) {
-     for (uint64_t Index = 0; Index < TableSize; Index++) {
-     uint64_t MaxProb   = MaximumTable[Index];
-     uint64_t MinProb   = MinimumTable[Index];
-     if ((Probability  >= MinProb) && (Probability <= MaxProb)) { // You found the symbol!
-     Symbol = Index;
-     }
-     }
-     } else {
-     for (uint64_t Index = TableSize; Index > 0; Index--) {
-     uint64_t MaxProb   = MaximumTable[Index];
-     uint64_t MinProb   = MinimumTable[Index];
-     if ((Probability  >= MinProb) && (Probability <= MaxProb)) { // You found the symbol!
-     Symbol = Index;
-     }
-     }
-     }
-     return Symbol;
+         if (WhichEnd == 0) {
+             for (uint64_t Index = 0; Index < TableSize; Index++) {
+                 uint64_t MaxProb   = MaximumTable[Index];
+                 uint64_t MinProb   = MinimumTable[Index];
+                 if ((Probability  >= MinProb) && (Probability <= MaxProb)) { // You found the symbol!
+                     Symbol = Index;
+                 }
+             }
+         } else {
+             for (uint64_t Index = TableSize; Index > 0; Index--) {
+                 uint64_t MaxProb   = MaximumTable[Index];
+                 uint64_t MinProb   = MinimumTable[Index];
+                 if ((Probability  >= MinProb) && (Probability <= MaxProb)) { // You found the symbol!
+                     Symbol = Index;
+                 }
+             }
+         }
+         return Symbol;
      }
      */
     
@@ -199,7 +199,7 @@ extern "C" {
         AlignBitBuffer(BitB, 1); // rbsp_trailing_bits();
         if (Enc->PPS->EntropyCodingMode == Arithmetic) {
             while (more_rbsp_trailing_data()) {
-                Enc->PPS->CABACZeroWord = ReadBits(BitB, 16, true); /* equal to 0x0000 */
+                uint16_t CABACZeroWord = ReadBits(BitB, 16, true); /* equal to 0x0000 */
             }
         }
     }

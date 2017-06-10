@@ -330,9 +330,10 @@ extern "C" {
         errno = 0;
         DecodeAVC *Dec                = (DecodeAVC*) calloc(1, sizeof(DecodeAVC));
         if (errno != 0) {
-            const char ErrnoError[128];
-            strerror_r(errno, ErrnoError, 128);
+            char *ErrnoError = (char*)calloc(1, 96);
+            strerror_r(errno, ErrnoError, 96);
             Log(LOG_ERR, "libModernAVC", "InitAVCDecoder", "Errno error: %s", ErrnoError);
+            free(ErrnoError);
         } else {
             Dec->NAL                  = (NALHeader*)                    calloc(1, sizeof(NALHeader));
             Dec->SPS                  = (SequenceParameterSet*)         calloc(1, sizeof(SequenceParameterSet));
