@@ -189,10 +189,10 @@
 		2CDA4B0D1F36B9E6005E6AD1 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				2CDA4B161F36BA2C005E6AD1 /* Decode */,
-				2CDA4B151F36BA26005E6AD1 /* Encode */,
 				2CDA4B0F1F36BA0C005E6AD1 /* ModernAVCTypes.h */,
 				2CDA4B111F36BA0C005E6AD1 /* ModernAVCTables.h */,
+				2CDA4B161F36BA2C005E6AD1 /* Decode */,
+				2CDA4B151F36BA26005E6AD1 /* Encode */,
 			);
 			name = Private;
 			sourceTree = "<group>";

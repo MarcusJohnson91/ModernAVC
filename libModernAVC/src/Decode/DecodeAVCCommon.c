@@ -1,4 +1,4 @@
-#include "../../../Dependencies/BitIO/libBitIO/include/BitIO.h"
+#include "../../include/libModernAVC.h"
 
 #include "../../include/Private/ModernAVCTypes.h"
 #include "../../include/Private/Decode/DecodeAVCCommon.h"
@@ -327,13 +327,10 @@ extern "C" {
     }
     
     DecodeAVC *InitAVCDecoder(void) {
-        errno = 0;
         DecodeAVC *Dec                = (DecodeAVC*) calloc(1, sizeof(DecodeAVC));
-        if (errno != 0) {
-            char *ErrnoError = (char*)calloc(1, 96);
-            strerror_r(errno, ErrnoError, 96);
-            Log(LOG_ERR, "libModernAVC", "InitAVCDecoder", "Errno error: %s", ErrnoError);
-            free(ErrnoError);
+        
+        if (Dec == NULL) {
+            Log(LOG_ERR, "libModernAVC", "InitAVCDecoder", "Pointer to DecodeAVC is NULL");
         } else {
             Dec->NAL                  = (NALHeader*)                    calloc(1, sizeof(NALHeader));
             Dec->SPS                  = (SequenceParameterSet*)         calloc(1, sizeof(SequenceParameterSet));

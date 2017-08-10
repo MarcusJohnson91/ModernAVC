@@ -1,7 +1,5 @@
-#include "../../../Dependencies/BitIO/libBitIO/include/BitIO.h"
-
-#include "../../include/Private/ModernAVCTypes.h"
 #include "../../include/Private/Encode/EncodeAVCCommon.h"
+#include "../../include/Private/ModernAVCTypes.h"
 
 #ifdef __cplusplus
 extern "C" {
