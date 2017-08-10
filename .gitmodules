@@ -1,0 +1,3 @@
+[submodule "Dependencies/ModernPNG"]
+	path = Dependencies/ModernPNG
+	url = https://github.com/bumblebritches57/ModernPNG.git
