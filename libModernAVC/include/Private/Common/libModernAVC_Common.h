@@ -1,15 +1,15 @@
-#include "../../libModernAVC.h"
+#include "libModernAVC_Types.h"
 
 #pragma once
 
-#ifndef LIBMODERNAVC_COMMON_H
-#define LIBMODERNAVC_COMMON_H
+#ifndef LIBMODERNAVC_Common_H
+#define LIBMODERNAVC_Common_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
     
-    int8_t   MacroBlock2SliceGroupMap(EncodeAVC *Enc, uint8_t CurrentMacroBlock);
+    int8_t   MacroBlock2SliceGroupMap(DecodeAVC *Dec, uint8_t CurrentMacroBlock);
     
     int64_t  Abs(int64_t X);
     
@@ -31,20 +31,22 @@ extern "C" {
     
     int64_t  Round(double X);
     
-    bool     AreAllViewsPaired(EncodeAVC *Enc);
+    bool     AreAllViewsPaired(DecodeAVC *Dec);
     
-    void     rbsp_slice_trailing_bits(EncodeAVC *Enc, BitBuffer *BitB);
+    void     rbsp_slice_trailing_bits(DecodeAVC *Dec, BitBuffer *BitB);
     
-    uint8_t  MacroBlockPartitionPredictionMode(EncodeAVC *Enc, uint8_t MacroBlockType, uint8_t PartitionNumber);
+    uint8_t  MacroBlockPartitionPredictionMode(DecodeAVC *Dec, uint8_t MacroBlockType, uint8_t PartitionNumber);
     
-    uint64_t NextMacroBlockAddress(EncodeAVC *Enc, uint64_t CurrentMacroBlockAddress);
+    uint64_t NextMacroBlockAddress(DecodeAVC *Dec, uint64_t CurrentMacroBlockAddress);
     
     uint8_t  NumberOfSubMacroBlockPartitions();
     
-    uint8_t  CalculateNumberOfTimeStamps(EncodeAVC *Enc);
+    uint8_t  CalculateNumberOfTimeStamps(DecodeAVC *Dec);
     
+    bool     InCropWindow(DecodeAVC *Dec, uint64_t MacroBlockAddress);
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* LIBMODERNAVC_COMMON_H */
+#endif /* LIBMODERNAVC_Common_H */
