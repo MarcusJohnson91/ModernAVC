@@ -4,6 +4,7 @@
 #include "../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/BitIO/libBitIO/include/CommandLineIO.h"
 
 #include "../libModernAVC/include/libModernAVC.h"
+#include "../libModernAVC/include/Private/Decode/libModernAVC_SetMetadata.h"
 
 #define ModernAVCVersion "0.1.0"
 
@@ -14,29 +15,34 @@ extern "C" {
     enum ModerAVCCommandLineSwitches {
         Input        = 0,
         Output       = 1,
-        LeftEye      = 2,
-        RightEye     = 3,
-        Encode       = 4,
-        Lossless     = 5,
-        BitRate      = 6,
-        SubSample    = 7,
-        FrameRate    = 8,
-        Profile      = 9,
-        Interlace    = 10,
-        Decode       = 11,
-        ExtractFrame = 12,
-        TrimFrames   = 13,
-        Help         = 14,
-        LogFile      = 15,
+        LogFile      = 2,
+        LeftEye      = 3,
+        RightEye     = 4,
+        Encode       = 5,
+        Lossless     = 6,
+        BitRate      = 7,
+        SubSample    = 8,
+        FrameRate    = 9,
+        Profile      = 10,
+        Interlace    = 11,
+        Decode       = 12,
+        ExtractFrame = 13,
+        TrimFrames   = 14,
+        Help         = 15,
     };
     
-    void ExtractAVCProfileFromCLI(CommandLineIO *CLI) {
+    void ExtractAVCProfileFromCLI(CommandLineIO *CLI, DecodeAVC *Dec) { // Ok, well the seperator will be the decimal, and we'll just use the period as a seperator
         // Profile option = 7
-        const char *ProfileString = GetCLIArgumentResult(CLI, Profile);
+        uint64_t ProfileArg = GetCLIArgumentNumFromSwitchNum(CLI, Profile);
+     	char *ProfileString = GetCLIArgumentResult(CLI, ProfileArg);
         // Now use strsplit to get the 2 halves on either side of the decimal.
         // then use atoi to get the digit into a number
         
-        float Profile        = atof(ProfileString);
+        char *ProfileMajorString = strtok(ProfileString, ".");
+        char *ProfileMinorString = strtok(NULL, ".");
+        
+        SetAVCProfile(Dec, atoll(ProfileMajorString), atoll(ProfileMinorString));
+        
         uint8_t ProfileMajor = (uint8_t)Profile;
         uint8_t ProfileMinor = Profile - ProfileMajor;
         /*
@@ -55,95 +61,92 @@ extern "C" {
         SetCLIAuthor(CLI, "BumbleBritches57");
         SetCLICopyright(CLI, "2017 - 2017");
         SetCLIDescription(CLI, "AVC encoder/decoder written from scratch in modern C");
-        SetCLILicense(CLI, "Revised BSD", "Open source license", false);
-        SetCLILicenseURL(CLI, "https://opensource.org/licenses/BSD-3-Clause");
+        SetCLILicense(CLI, "Revised BSD", "Permissive, open source", "https://opensource.org/licenses/BSD-3-Clause", false);
         SetCLIMinSwitches(CLI, 3);
         
-        SetCLISwitchFlag(CLI, Input, "Input", 5);
+        SetCLISwitchFlag(CLI, Input, "Input");
         SetCLISwitchDescription(CLI, Input, "Input file or stdin with: -");
         SetCLISwitchResultStatus(CLI, Input, true);
-        SetCLISwitchAsMain(CLI, Input, true);
+        SetCLISwitchAsMaster(CLI, Input);
         
-        SetCLISwitchFlag(CLI, Output, "Output", 6);
+        SetCLISwitchFlag(CLI, Output, "Output");
         SetCLISwitchDescription(CLI, Output, "Output file or stdout with: -");
         SetCLISwitchResultStatus(CLI, Output, true);
-        SetCLISwitchAsMain(CLI, Output, true);
+        SetCLISwitchAsMaster(CLI, Output);
         
-        SetCLISwitchFlag(CLI, LeftEye, "LeftEye", 7);
+        SetCLISwitchFlag(CLI, LogFile, "LogFile");
+        SetCLISwitchDescription(CLI, LogFile, "Prints all the command line options");
+        SetCLISwitchResultStatus(CLI, LogFile, true);
+        SetCLISwitchAsMaster(CLI, LogFile);
+        
+        SetCLISwitchFlag(CLI, LeftEye, "LeftEye");
         SetCLISwitchDescription(CLI, LeftEye, "The left view for encoding or decoding");
         SetCLISwitchAsChild(CLI, Input, LeftEye);
         SetCLISwitchAsChild(CLI, Output, LeftEye);
         
-        SetCLISwitchFlag(CLI, RightEye, "RightEye", 8);
+        SetCLISwitchFlag(CLI, RightEye, "RightEye");
         SetCLISwitchDescription(CLI, RightEye, "The right view for encoding or decoding");
         SetCLISwitchAsChild(CLI, Input, RightEye);
         SetCLISwitchAsChild(CLI, Output, RightEye);
         
-        
         /* Start Encode options */
-        SetCLISwitchFlag(CLI, Encode, "Encode", 6);
+        SetCLISwitchFlag(CLI, Encode, "Encode");
         SetCLISwitchDescription(CLI, Encode, "Encode input to AVC");
         SetCLISwitchResultStatus(CLI, Encode, false);
-        SetCLISwitchAsMain(CLI, Encode, true);
+        SetCLISwitchAsMaster(CLI, Encode);
         
-        SetCLISwitchFlag(CLI, Lossless, "Lossless", 8);
+        SetCLISwitchFlag(CLI, Lossless, "Lossless");
         SetCLISwitchDescription(CLI, Lossless, "Encode the AVC file losslessly and only uses lossless color transforms like YCgCo");
         SetCLISwitchResultStatus(CLI, Lossless, false);
         SetCLISwitchAsChild(CLI, Encode, Lossless);
         
-        SetCLISwitchFlag(CLI, BitRate, "BitRate", 7);
+        SetCLISwitchFlag(CLI, BitRate, "BitRate");
         SetCLISwitchDescription(CLI, BitRate, "Target bitrate for the produced AVC file, supported postfixes: MBps, KBps (mega bits, kilo bits (1024))");
         SetCLISwitchResultStatus(CLI, BitRate, true);
-        SetCLISwitchMetaFlag(CLI, BitRate, 2);
         SetCLISwitchAsChild(CLI, Encode, BitRate);
         
-        SetCLISwitchFlag(CLI, SubSample, "SubSample", 9);
+        SetCLISwitchFlag(CLI, SubSample, "SubSample");
         SetCLISwitchDescription(CLI, SubSample, "Should the produced AVC file use chroma subsampling? if so, what type");
         SetCLISwitchResultStatus(CLI, SubSample, true);
         SetCLISwitchAsChild(CLI, Encode, SubSample);
         
-        SetCLISwitchFlag(CLI, FrameRate, "FrameRate", 9);
+        SetCLISwitchFlag(CLI, FrameRate, "FrameRate");
         SetCLISwitchDescription(CLI, FrameRate, "the framerate of the movie, for decimal fpses, use fractional notation IE: 24000/1001");
         SetCLISwitchResultStatus(CLI, FrameRate, true);
         SetCLISwitchAsChild(CLI, Encode, FrameRate);
         
-        SetCLISwitchFlag(CLI, Profile, "Profile", 9);
+        SetCLISwitchFlag(CLI, Profile, "Profile");
         SetCLISwitchDescription(CLI, Profile, "the level to encode the movie with, E.G.: 5.2");
         SetCLISwitchResultStatus(CLI, Profile, true);
         SetCLISwitchAsChild(CLI, Encode, Profile);
         
-        SetCLISwitchFlag(CLI, Interlace, "Interlace", 9);
+        SetCLISwitchFlag(CLI, Interlace, "Interlace");
         SetCLISwitchDescription(CLI, Interlace, "Should the movie be interlaced?");
         SetCLISwitchResultStatus(CLI, Interlace, false);
         SetCLISwitchAsChild(CLI, Encode, Interlace);
         /* End encode options */
         
         /* Start Decode options */
-        SetCLISwitchFlag(CLI, Decode, "Decode", 6);
+        SetCLISwitchFlag(CLI, Decode, "Decode");
         SetCLISwitchDescription(CLI, Decode, "Decode AVC to output");
         SetCLISwitchResultStatus(CLI, Decode, false);
-        SetCLISwitchAsMain(CLI, Decode, true);
+        SetCLISwitchAsMaster(CLI, Decode);
         
-        SetCLISwitchFlag(CLI, ExtractFrame, "ExtractFrame", 6);
+        SetCLISwitchFlag(CLI, ExtractFrame, "ExtractFrame");
         SetCLISwitchDescription(CLI, ExtractFrame, "Extracts frame (frame number, or timestamp in HH:MM:SS:Frame format)");
         SetCLISwitchResultStatus(CLI, ExtractFrame, false);
         SetCLISwitchAsChild(CLI, Decode, ExtractFrame);
         
-        SetCLISwitchFlag(CLI, TrimFrames, "TrimFrames", 6);
+        SetCLISwitchFlag(CLI, TrimFrames, "TrimFrames");
         SetCLISwitchDescription(CLI, TrimFrames, "Removes frames in format FirstFrame..LastFrame (Where Frame is either the frame numbers, or a timestamp in HH:MM:SS:Frame format)");
         SetCLISwitchResultStatus(CLI, TrimFrames, false);
         SetCLISwitchAsChild(CLI, Decode, TrimFrames);
         /* End Decode options */
         
-        SetCLISwitchFlag(CLI, Help, "Help", 4);
+        SetCLISwitchFlag(CLI, Help, "Help");
         SetCLISwitchDescription(CLI, Help, "Prints all the command line options");
         SetCLISwitchResultStatus(CLI, Help, false);
-        SetCLISwitchAsMain(CLI, Help, true);
-        
-        SetCLISwitchFlag(CLI, LogFile, "LogFile", 4);
-        SetCLISwitchDescription(CLI, LogFile, "Prints all the command line options");
-        SetCLISwitchResultStatus(CLI, LogFile, true);
-        SetCLISwitchAsMain(CLI, LogFile, true);
+        SetCLISwitchAsMaster(CLI, Help);
         
         return CLI;
     }
@@ -158,31 +161,36 @@ extern "C" {
         
         ParseCommandLineArguments(CLI, argc, argv);
         
-        if (GetCLISwitchPresence(CLI, Encode)) { // Encode
+        
+        
+        /*
+         Ok, so let's say we want to -Encode -Lossless -Subsampling 444 -Framerate 24000/1001 -Profile 5.1 -Input -LeftEye LeftEye.PNGs -Input -RightEye RightEye.PNGs -Output Final.avc
+         */
+        
+        
+        if (GetCLIArgumentNumFromSwitchNum(CLI, Encode) != 0xFFFFFFFFFFFFFFFF) { // Encode
             
-        } else if (GetCLISwitchPresence(CLI, Decode)) { // Decode
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, Decode) != 0xFFFFFFFFFFFFFFFF) { // Decode
             
-        } else if (GetCLISwitchPresence(CLI, BitRate)) { // Bitrate
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, BitRate) != 0xFFFFFFFFFFFFFFFF) { // Bitrate
             
-        } else if (GetCLISwitchPresence(CLI, SubSample)) { // Subsampling
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, SubSample) != 0xFFFFFFFFFFFFFFFF) { // Subsampling
             
-        } else if (GetCLISwitchPresence(CLI, FrameRate)) { // Framerate
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, FrameRate) != 0xFFFFFFFFFFFFFFFF) { // Framerate
             
-        } else if (GetCLISwitchPresence(CLI, Profile)) { // Profile
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, Profile) != 0xFFFFFFFFFFFFFFFF) { // Profile
             
-        } else if (GetCLISwitchPresence(CLI, Interlace)) { // Interlacing
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, Interlace) != 0xFFFFFFFFFFFFFFFF) { // Interlacing
             
-        } else if (GetCLISwitchPresence(CLI, Lossless)) { // Lossless
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, Lossless) != 0xFFFFFFFFFFFFFFFF) { // Lossless
             
-        } else if (GetCLISwitchPresence(CLI, Help)) { // Help
-            
-        } else if (GetCLISwitchPresence(CLI, LogFile)) {
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, LogFile) != 0xFFFFFFFFFFFFFFFF) { // LogFile
             
         }
         
-        if (GetCLISwitchPresence(CLI, Input)) { // Input
+        if (GetCLIArgumentNumFromSwitchNum(CLI, Input) != 0xFFFFFFFFFFFFFFFF) { // Input
             
-        } else if (GetCLISwitchPresence(CLI, Output)) { // Output
+        } else if (GetCLIArgumentNumFromSwitchNum(CLI, Output) != 0xFFFFFFFFFFFFFFFF) { // Output
             
         }
         
