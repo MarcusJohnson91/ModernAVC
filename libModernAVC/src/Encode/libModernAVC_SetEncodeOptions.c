@@ -9,15 +9,16 @@
 extern "C" {
 #endif
     
-    void SetAVCProfile(DecodeAVC *Dec, const uint8_t ProfileMajor, const uint8_t ProfileMinor) {
-        if (Dec == NULL) {
-            Log(LOG_ERR, "libModernAVC", "SetAVCProfile", "Pointer to DecodeAVC is NULL");
+    void SetAVCEncodeProfile(EncodeAVC *Enc, const uint8_t ProfileMajor, const uint8_t ProfileMinor) {
+        if (Enc == NULL) {
+            Log(LOG_ERR, "libModernAVC", "SetAVCEncodeProfile", "Pointer to DecodeAVC is NULL");
         } else {
-            Dec->ProfileMajor = ProfileMajor;
-            Dec->ProfileMinor = ProfileMinor;
+            Enc->ProfileMajor = ProfileMajor;
+            Enc->ProfileMinor = ProfileMinor;
         }
     }
     
 #ifdef __cplusplus
 }
 #endif
+

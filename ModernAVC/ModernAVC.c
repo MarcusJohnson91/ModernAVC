@@ -4,7 +4,7 @@
 #include "../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/BitIO/libBitIO/include/CommandLineIO.h"
 
 #include "../libModernAVC/include/libModernAVC.h"
-#include "../libModernAVC/include/Private/Decode/libModernAVC_SetMetadata.h"
+#include "../libModernAVC/include/Private/Encode/libModernAVC_SetEncodeOptions.h"
 
 #define ModernAVCVersion "0.1.0"
 
@@ -13,11 +13,13 @@ extern "C" {
 #endif
     
     enum ModerAVCCommandLineSwitches {
+        /* General Options */
         Input        = 0,
         Output       = 1,
         LogFile      = 2,
         LeftEye      = 3,
         RightEye     = 4,
+        /* Encode Options */
         Encode       = 5,
         Lossless     = 6,
         BitRate      = 7,
@@ -25,13 +27,15 @@ extern "C" {
         FrameRate    = 9,
         Profile      = 10,
         Interlace    = 11,
+        /* Decode Options */
         Decode       = 12,
         ExtractFrame = 13,
         TrimFrames   = 14,
+        /* Help Option */
         Help         = 15,
     };
     
-    void ExtractAVCProfileFromCLI(CommandLineIO *CLI, DecodeAVC *Dec) { // Ok, well the seperator will be the decimal, and we'll just use the period as a seperator
+    void ExtractAVCProfileFromCLI(CommandLineIO *CLI, EncodeAVC *Enc) { // Ok, well the seperator will be the decimal, and we'll just use the period as a seperator
         // Profile option = 7
         uint64_t ProfileArg = GetCLIArgumentNumFromSwitchNum(CLI, Profile);
      	char *ProfileString = GetCLIArgumentResult(CLI, ProfileArg);
@@ -41,17 +45,12 @@ extern "C" {
         char *ProfileMajorString = strtok(ProfileString, ".");
         char *ProfileMinorString = strtok(NULL, ".");
         
-        SetAVCProfile(Dec, atoll(ProfileMajorString), atoll(ProfileMinorString));
-        
-        uint8_t ProfileMajor = (uint8_t)Profile;
-        uint8_t ProfileMinor = Profile - ProfileMajor;
+        SetAVCEncodeProfile(Enc, atoll(ProfileMajorString), atoll(ProfileMinorString));
         /*
         char *ProfileMajorString  = strsep(ProfileString, ".");
         char *ProfileMinorString  = strsep(ProfileString, ".");
          */
     }
-    
-    
     
     CommandLineIO *SetModernAVCOptions(void) {
         CommandLineIO *CLI = InitCommandLineIO(16);

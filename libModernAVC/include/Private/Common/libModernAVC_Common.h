@@ -39,7 +39,7 @@ extern "C" {
     
     uint64_t NextMacroBlockAddress(DecodeAVC *Dec, uint64_t CurrentMacroBlockAddress);
     
-    uint8_t  NumberOfSubMacroBlockPartitions();
+    uint8_t  GetNumSubMacroBlockPartitions(uint8_t *MacroBlockType, uint8_t **SubMacroBlockType);
     
     uint8_t  CalculateNumberOfTimeStamps(DecodeAVC *Dec);
     

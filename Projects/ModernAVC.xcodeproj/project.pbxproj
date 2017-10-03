@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C03FC801E850CDC0075BA8C /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC7F1E850CC40075BA8C /* libBitIO.a */; };
+		2C5660301F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C56602F1F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c */; };
+		2C5660321F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5660311F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h */; };
 		2C7B4C0B1EC9B22B0078DC59 /* ModernAVC.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C0A1EC9B22B0078DC59 /* ModernAVC.c */; };
 		2C7B4C0C1EC9B44A0078DC59 /* libModernAVC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */; };
 		2C7B4C121EC9B4AF0078DC59 /* libModernAVC.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */; };
@@ -16,8 +18,6 @@
 		2C7B4C291EC9B5160078DC59 /* libModernAVC_DecodeMacroBlock.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C241EC9B5160078DC59 /* libModernAVC_DecodeMacroBlock.c */; };
 		2C7B4C2A1EC9B5160078DC59 /* libModernAVC_DecodeSlice.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C251EC9B5160078DC59 /* libModernAVC_DecodeSlice.c */; };
 		2C7B4C2C1EC9B5160078DC59 /* libModernAVC_ParseNAL.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C271EC9B5160078DC59 /* libModernAVC_ParseNAL.c */; };
-		2CA7204C1F787F04001E980D /* libModernAVC_SetMetadata.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CA7204B1F787F04001E980D /* libModernAVC_SetMetadata.c */; };
-		2CA7204E1F787FB6001E980D /* libModernAVC_SetMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CA7204D1F787FB6001E980D /* libModernAVC_SetMetadata.h */; };
 		2CDA4B1C1F36BAC9005E6AD1 /* libModernAVC_ParseNAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDA4B171F36BAC9005E6AD1 /* libModernAVC_ParseNAL.h */; };
 		2CDA4B1D1F36BAC9005E6AD1 /* libModernAVC_Decode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDA4B181F36BAC9005E6AD1 /* libModernAVC_Decode.h */; };
 		2CDA4B1F1F36BAC9005E6AD1 /* libModernAVC_DecodeMacroBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDA4B1A1F36BAC9005E6AD1 /* libModernAVC_DecodeMacroBlock.h */; };
@@ -54,6 +54,8 @@
 /* Begin PBXFileReference section */
 		2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
 		2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModernAVC.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C56602F1F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = libModernAVC_SetEncodeOptions.c; path = ../libModernAVC/src/Encode/libModernAVC_SetEncodeOptions.c; sourceTree = "<group>"; };
+		2C5660311F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = libModernAVC_SetEncodeOptions.h; path = ../libModernAVC/include/Private/Encode/libModernAVC_SetEncodeOptions.h; sourceTree = "<group>"; };
 		2C7B4C021EC9B1AB0078DC59 /* ModernAVC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ModernAVC; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7B4C0A1EC9B22B0078DC59 /* ModernAVC.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ModernAVC.c; path = ../ModernAVC/ModernAVC.c; sourceTree = "<group>"; };
 		2C7B4C0E1EC9B4AF0078DC59 /* libModernAVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC.h; path = ../libModernAVC/include/libModernAVC.h; sourceTree = "<group>"; };
@@ -62,8 +64,6 @@
 		2C7B4C241EC9B5160078DC59 /* libModernAVC_DecodeMacroBlock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libModernAVC_DecodeMacroBlock.c; path = ../libModernAVC/src/Decode/libModernAVC_DecodeMacroBlock.c; sourceTree = "<group>"; };
 		2C7B4C251EC9B5160078DC59 /* libModernAVC_DecodeSlice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libModernAVC_DecodeSlice.c; path = ../libModernAVC/src/Decode/libModernAVC_DecodeSlice.c; sourceTree = "<group>"; };
 		2C7B4C271EC9B5160078DC59 /* libModernAVC_ParseNAL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libModernAVC_ParseNAL.c; path = ../libModernAVC/src/Decode/libModernAVC_ParseNAL.c; sourceTree = "<group>"; };
-		2CA7204B1F787F04001E980D /* libModernAVC_SetMetadata.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = libModernAVC_SetMetadata.c; path = ../libModernAVC/src/Decode/libModernAVC_SetMetadata.c; sourceTree = "<group>"; };
-		2CA7204D1F787FB6001E980D /* libModernAVC_SetMetadata.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = libModernAVC_SetMetadata.h; path = ../libModernAVC/include/Private/Decode/libModernAVC_SetMetadata.h; sourceTree = "<group>"; };
 		2CDA4B171F36BAC9005E6AD1 /* libModernAVC_ParseNAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC_ParseNAL.h; path = ../libModernAVC/include/Private/Decode/libModernAVC_ParseNAL.h; sourceTree = "<group>"; };
 		2CDA4B181F36BAC9005E6AD1 /* libModernAVC_Decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC_Decode.h; path = ../libModernAVC/include/Private/Decode/libModernAVC_Decode.h; sourceTree = "<group>"; };
 		2CDA4B1A1F36BAC9005E6AD1 /* libModernAVC_DecodeMacroBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC_DecodeMacroBlock.h; path = ../libModernAVC/include/Private/Decode/libModernAVC_DecodeMacroBlock.h; sourceTree = "<group>"; };
@@ -153,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				2C7B4C231EC9B5160078DC59 /* libModernAVC_Decode.c */,
-				2CA7204B1F787F04001E980D /* libModernAVC_SetMetadata.c */,
 				2C7B4C271EC9B5160078DC59 /* libModernAVC_ParseNAL.c */,
 				2C7B4C251EC9B5160078DC59 /* libModernAVC_DecodeSlice.c */,
 				2C7B4C241EC9B5160078DC59 /* libModernAVC_DecodeMacroBlock.c */,
@@ -165,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				2C7B4C211EC9B5060078DC59 /* libModernAVC_Encode.c */,
+				2C56602F1F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c */,
 			);
 			name = Encode;
 			sourceTree = "<group>";
@@ -200,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				2CDA4B221F36BAD5005E6AD1 /* libModernAVC_Encode.h */,
+				2C5660311F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h */,
 			);
 			name = Encode;
 			sourceTree = "<group>";
@@ -211,7 +212,6 @@
 				2CDA4B181F36BAC9005E6AD1 /* libModernAVC_Decode.h */,
 				2CDA4B1A1F36BAC9005E6AD1 /* libModernAVC_DecodeMacroBlock.h */,
 				2CDA4B1B1F36BAC9005E6AD1 /* libModernAVC_DecodeSlice.h */,
-				2CA7204D1F787FB6001E980D /* libModernAVC_SetMetadata.h */,
 			);
 			name = Decode;
 			sourceTree = "<group>";
@@ -245,8 +245,8 @@
 				2CDA4B1D1F36BAC9005E6AD1 /* libModernAVC_Decode.h in Headers */,
 				2CDA4B1C1F36BAC9005E6AD1 /* libModernAVC_ParseNAL.h in Headers */,
 				2CE4E2531F56C7B900A6BD01 /* libModernAVC_Common.h in Headers */,
-				2CA7204E1F787FB6001E980D /* libModernAVC_SetMetadata.h in Headers */,
 				2CE4E2501F56C62D00A6BD01 /* libModernAVC_Types.h in Headers */,
+				2C5660321F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h in Headers */,
 				2C7B4C121EC9B4AF0078DC59 /* libModernAVC.h in Headers */,
 				2CDA4B1F1F36BAC9005E6AD1 /* libModernAVC_DecodeMacroBlock.h in Headers */,
 				2CE4E2511F56C62D00A6BD01 /* libModernAVC_Tables.h in Headers */,
@@ -351,9 +351,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CA7204C1F787F04001E980D /* libModernAVC_SetMetadata.c in Sources */,
 				2C7B4C2C1EC9B5160078DC59 /* libModernAVC_ParseNAL.c in Sources */,
 				2C7B4C281EC9B5160078DC59 /* libModernAVC_Decode.c in Sources */,
+				2C5660301F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c in Sources */,
 				2CE4E2551F56C89D00A6BD01 /* libModernAVC_Common.c in Sources */,
 				2C7B4C221EC9B5060078DC59 /* libModernAVC_Encode.c in Sources */,
 				2C7B4C2A1EC9B5160078DC59 /* libModernAVC_DecodeSlice.c in Sources */,
@@ -481,7 +481,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
