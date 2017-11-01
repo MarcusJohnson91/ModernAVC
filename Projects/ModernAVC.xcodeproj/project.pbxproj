@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C03FC801E850CDC0075BA8C /* libBitIO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C03FC7F1E850CC40075BA8C /* libBitIO.a */; };
 		2C5660301F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C56602F1F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c */; };
 		2C5660321F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C5660311F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h */; };
 		2C7B4C0B1EC9B22B0078DC59 /* ModernAVC.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C0A1EC9B22B0078DC59 /* ModernAVC.c */; };
@@ -30,9 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C03FC7E1E850CC40075BA8C /* PBXContainerItemProxy */ = {
+		2C056C3B1FA32AC70083E32B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */;
+			containerPortal = 2C056C371FA32AC70083E32B /* BitIO.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2C419FD51E5B00CC00FC804F;
 			remoteInfo = libBitIO;
@@ -52,7 +51,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
+		2C056C371FA32AC70083E32B /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
 		2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModernAVC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56602F1F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = libModernAVC_SetEncodeOptions.c; path = ../libModernAVC/src/Encode/libModernAVC_SetEncodeOptions.c; sourceTree = "<group>"; };
 		2C5660311F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = libModernAVC_SetEncodeOptions.h; path = ../libModernAVC/include/Private/Encode/libModernAVC_SetEncodeOptions.h; sourceTree = "<group>"; };
@@ -80,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C03FC801E850CDC0075BA8C /* libBitIO.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,15 +96,15 @@
 		2C03FC761E850CA60075BA8C /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */,
+				2C056C371FA32AC70083E32B /* BitIO.xcodeproj */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
 		};
-		2C03FC781E850CC40075BA8C /* Products */ = {
+		2C056C381FA32AC70083E32B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C03FC7F1E850CC40075BA8C /* libBitIO.a */,
+				2C056C3C1FA32AC70083E32B /* libBitIO.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -324,8 +322,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2C03FC781E850CC40075BA8C /* Products */;
-					ProjectRef = 2C03FC771E850CC40075BA8C /* BitIO.xcodeproj */;
+					ProductGroup = 2C056C381FA32AC70083E32B /* Products */;
+					ProjectRef = 2C056C371FA32AC70083E32B /* BitIO.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -337,11 +335,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2C03FC7F1E850CC40075BA8C /* libBitIO.a */ = {
+		2C056C3C1FA32AC70083E32B /* libBitIO.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libBitIO.a;
-			remoteRef = 2C03FC7E1E850CC40075BA8C /* PBXContainerItemProxy */;
+			remoteRef = 2C056C3B1FA32AC70083E32B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

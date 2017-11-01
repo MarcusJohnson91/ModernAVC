@@ -11,7 +11,7 @@ extern "C" {
     
     void SetAVCEncodeProfile(EncodeAVC *Enc, const uint8_t ProfileMajor, const uint8_t ProfileMinor) {
         if (Enc == NULL) {
-            Log(LOG_ERR, "libModernAVC", "SetAVCEncodeProfile", "Pointer to DecodeAVC is NULL");
+            BitIOLog(LOG_ERROR, "libModernAVC", "SetAVCEncodeProfile", "Pointer to DecodeAVC is NULL");
         } else {
             Enc->ProfileMajor = ProfileMajor;
             Enc->ProfileMinor = ProfileMinor;
