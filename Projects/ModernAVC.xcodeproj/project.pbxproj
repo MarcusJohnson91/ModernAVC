@@ -17,6 +17,7 @@
 		2C7B4C291EC9B5160078DC59 /* libModernAVC_ParseMacroBlock.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C241EC9B5160078DC59 /* libModernAVC_ParseMacroBlock.c */; };
 		2C7B4C2A1EC9B5160078DC59 /* libModernAVC_ParseSlice.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C251EC9B5160078DC59 /* libModernAVC_ParseSlice.c */; };
 		2C7B4C2C1EC9B5160078DC59 /* libModernAVC_ParseNAL.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B4C271EC9B5160078DC59 /* libModernAVC_ParseNAL.c */; };
+		2CD571691FB854B900D4B282 /* libModernAVC_EntropyCoders.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CD571681FB854B900D4B282 /* libModernAVC_EntropyCoders.c */; };
 		2CDA4B1C1F36BAC9005E6AD1 /* libModernAVC_ParseNAL.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDA4B171F36BAC9005E6AD1 /* libModernAVC_ParseNAL.h */; };
 		2CDA4B1D1F36BAC9005E6AD1 /* libModernAVC_Decode.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDA4B181F36BAC9005E6AD1 /* libModernAVC_Decode.h */; };
 		2CDA4B1F1F36BAC9005E6AD1 /* libModernAVC_ParseMacroBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CDA4B1A1F36BAC9005E6AD1 /* libModernAVC_ParseMacroBlock.h */; };
@@ -29,12 +30,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2C056C3B1FA32AC70083E32B /* PBXContainerItemProxy */ = {
+		2CD571611FB84C2400D4B282 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 2C056C371FA32AC70083E32B /* BitIO.xcodeproj */;
+			containerPortal = 2CD571591FB84C2400D4B282 /* ModernPNG.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 2C419FD51E5B00CC00FC804F;
-			remoteInfo = libBitIO;
+			remoteGlobalIDString = 2C6B1A671F4052F400ABF2F8;
+			remoteInfo = libModernPNG;
+		};
+		2CD571631FB84C2400D4B282 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2CD571591FB84C2400D4B282 /* ModernPNG.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C6B1AAE1F40543A00ABF2F8;
+			remoteInfo = ModernPNG;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -51,7 +59,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C056C371FA32AC70083E32B /* BitIO.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BitIO.xcodeproj; path = ../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/BitIO/Projects/BitIO.xcodeproj; sourceTree = "<group>"; };
 		2C16FCF41DDF8EE100E72D7F /* libModernAVC.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libModernAVC.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C56602F1F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = libModernAVC_SetEncodeOptions.c; path = ../libModernAVC/src/Encode/libModernAVC_SetEncodeOptions.c; sourceTree = "<group>"; };
 		2C5660311F82BB05005AFD3E /* libModernAVC_SetEncodeOptions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = libModernAVC_SetEncodeOptions.h; path = ../libModernAVC/include/Private/Encode/libModernAVC_SetEncodeOptions.h; sourceTree = "<group>"; };
@@ -63,6 +70,8 @@
 		2C7B4C241EC9B5160078DC59 /* libModernAVC_ParseMacroBlock.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libModernAVC_ParseMacroBlock.c; path = ../libModernAVC/src/Decode/libModernAVC_ParseMacroBlock.c; sourceTree = "<group>"; };
 		2C7B4C251EC9B5160078DC59 /* libModernAVC_ParseSlice.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libModernAVC_ParseSlice.c; path = ../libModernAVC/src/Decode/libModernAVC_ParseSlice.c; sourceTree = "<group>"; };
 		2C7B4C271EC9B5160078DC59 /* libModernAVC_ParseNAL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = libModernAVC_ParseNAL.c; path = ../libModernAVC/src/Decode/libModernAVC_ParseNAL.c; sourceTree = "<group>"; };
+		2CD571591FB84C2400D4B282 /* ModernPNG.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ModernPNG.xcodeproj; path = ../Dependencies/ModernPNG/Projects/ModernPNG.xcodeproj; sourceTree = "<group>"; };
+		2CD571681FB854B900D4B282 /* libModernAVC_EntropyCoders.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = libModernAVC_EntropyCoders.c; path = ../libModernAVC/src/Common/libModernAVC_EntropyCoders.c; sourceTree = "<group>"; };
 		2CDA4B171F36BAC9005E6AD1 /* libModernAVC_ParseNAL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC_ParseNAL.h; path = ../libModernAVC/include/Private/Decode/libModernAVC_ParseNAL.h; sourceTree = "<group>"; };
 		2CDA4B181F36BAC9005E6AD1 /* libModernAVC_Decode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC_Decode.h; path = ../libModernAVC/include/Private/Decode/libModernAVC_Decode.h; sourceTree = "<group>"; };
 		2CDA4B1A1F36BAC9005E6AD1 /* libModernAVC_ParseMacroBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = libModernAVC_ParseMacroBlock.h; path = ../libModernAVC/include/Private/Decode/libModernAVC_ParseMacroBlock.h; sourceTree = "<group>"; };
@@ -96,17 +105,9 @@
 		2C03FC761E850CA60075BA8C /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				2C056C371FA32AC70083E32B /* BitIO.xcodeproj */,
+				2CD571591FB84C2400D4B282 /* ModernPNG.xcodeproj */,
 			);
 			name = Dependencies;
-			sourceTree = "<group>";
-		};
-		2C056C381FA32AC70083E32B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2C056C3C1FA32AC70083E32B /* libBitIO.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		2C16FCEB1DDF8EE100E72D7F = {
@@ -184,6 +185,15 @@
 			name = ModernAVC;
 			sourceTree = "<group>";
 		};
+		2CD5715A1FB84C2400D4B282 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2CD571621FB84C2400D4B282 /* libModernPNG.a */,
+				2CD571641FB84C2400D4B282 /* ModernPNG */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		2CDA4B0D1F36B9E6005E6AD1 /* Private */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				2CE4E2541F56C89D00A6BD01 /* libModernAVC_Common.c */,
+				2CD571681FB854B900D4B282 /* libModernAVC_EntropyCoders.c */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -322,8 +333,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 2C056C381FA32AC70083E32B /* Products */;
-					ProjectRef = 2C056C371FA32AC70083E32B /* BitIO.xcodeproj */;
+					ProductGroup = 2CD5715A1FB84C2400D4B282 /* Products */;
+					ProjectRef = 2CD571591FB84C2400D4B282 /* ModernPNG.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -335,11 +346,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		2C056C3C1FA32AC70083E32B /* libBitIO.a */ = {
+		2CD571621FB84C2400D4B282 /* libModernPNG.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libBitIO.a;
-			remoteRef = 2C056C3B1FA32AC70083E32B /* PBXContainerItemProxy */;
+			path = libModernPNG.a;
+			remoteRef = 2CD571611FB84C2400D4B282 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2CD571641FB84C2400D4B282 /* ModernPNG */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = ModernPNG;
+			remoteRef = 2CD571631FB84C2400D4B282 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -352,6 +370,7 @@
 				2C7B4C2C1EC9B5160078DC59 /* libModernAVC_ParseNAL.c in Sources */,
 				2C7B4C281EC9B5160078DC59 /* libModernAVC_Decode.c in Sources */,
 				2C5660301F82BAD7005AFD3E /* libModernAVC_SetEncodeOptions.c in Sources */,
+				2CD571691FB854B900D4B282 /* libModernAVC_EntropyCoders.c in Sources */,
 				2CE4E2551F56C89D00A6BD01 /* libModernAVC_Common.c in Sources */,
 				2C7B4C221EC9B5060078DC59 /* libModernAVC_Encode.c in Sources */,
 				2C7B4C2A1EC9B5160078DC59 /* libModernAVC_ParseSlice.c in Sources */,
