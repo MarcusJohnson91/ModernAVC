@@ -5,7 +5,8 @@
  @version   0.2.3
  */
 
-#include "../../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/BitIO/libBitIO/include/BitIO.h"
+#include "../../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/FoundationIO/libFoundationIO/include/BitIO.h"
+#include "../../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/FoundationIO/libFoundationIO/include/Log.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -34,7 +35,7 @@ extern "C" {
         AVCStopBit                                  =   1,
     };
     
-    static const char *ModernAVCLibraryName         = "libModernAVC";
+    static const char *         = "libModernAVC";
     
     enum EntropyCoder {
         ExpGolomb                                   =  0,

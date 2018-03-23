@@ -5,13 +5,15 @@
 #include "../../include/Private/Decode/libModernAVC_ParseSlice.h"
 #include "../../include/Private/Decode/libModernAVC_ParseNAL.h"
 
+#include "../../../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/FoundationIO/libFoundationIO/include/Log.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif
     
     void SetAVCEncodeProfile(EncodeAVC *Enc, const uint8_t ProfileMajor, const uint8_t ProfileMinor) {
         if (Enc == NULL) {
-            BitIOLog(LOG_ERROR, ModernAVCLibraryName, __func__, "Pointer to DecodeAVC is NULL");
+            Log(Log_ERROR, __func__, U8("Pointer to DecodeAVC is NULL"));
         } else {
             Enc->ProfileMajor = ProfileMajor;
             Enc->ProfileMinor = ProfileMinor;

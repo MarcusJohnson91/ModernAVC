@@ -10,6 +10,77 @@ extern "C" {
 #endif
     
     typedef struct SequenceParameterSet { // Whole video variables
+        uint32_t  ***AnchorRef;                                    // anchor_ref_l0 anchor_ref_l1
+        uint16_t  ***NonAnchorRef;                                 // non_anchor_ref_l0 non_anchor_ref_l1
+        uint8_t   ***NonAnchorRefCount;                            // num_non_anchor_refs_l0 num_non_anchor_refs_l1
+        uint8_t   ***AppOpTargetViewID;                            // applicable_op_target_view_id
+        bool      ***AppOpDepthFlag;                               // applicable_op_depth_flag
+        bool      ***AppOpTextureFlag;                             // applicable_op_texture_flag
+        int32_t    **RefFrameOffset;                               // offset_for_ref_frame
+        uint16_t   **ViewID;                                       // view_id
+        uint16_t   **AppOpNumTargetViews;                          // applicable_op_num_target_views_minus1
+        uint16_t   **MVCDAppOpDepthViews;                          // applicable_op_num_depth_views_minus1
+        uint8_t    **LevelIDC;                                     // level_idc
+        uint8_t    **AnchorRefsCount;                              // num_anchor_refs_l0 num_anchor_refs_l1
+        uint8_t    **AppOpTemporalID;                              // applicable_op_temporal_id
+        uint8_t    **AppOpNumViews;                                // applicable_op_num_views_minus1
+        uint8_t    **AppOpTextureViews;                            // applicable_op_num_texture_views_minus1
+        uint8_t    **AppOpNumDepthViews;                           // applicable_op_num_depth_views
+        bool       **ScalingListFlag;                              // seq_scaling_list_present_flag
+        uint16_t    *NumApplicableOps;                             // num_applicable_ops_minus1
+        uint8_t     *AVC3DViewID;                                  // view_id_3dv
+        uint8_t     *GridPosViewID;                                // grid_pos_view_id
+        uint8_t     *GridPosX;                                     // grid_pos_x
+        uint8_t     *GridPosY;                                     // grid_pos_y
+        uint8_t     *MVCViewX;                                     // view0_grid_position_x view1_grid_position_x
+        uint8_t     *MVCViewY;                                     // view0_grid_position_y view1_grid_position_y
+        uint8_t     *DepthViewID;                                  // DepthViewId
+        bool        *DepthViewPresent;                             // depth_view_present_flag
+        bool        *TextureViewPresent;                           // texture_view_present_flag
+        uint64_t     FrameCropLeft;                                // frame_crop_left_offset
+        uint64_t     MaxFrameNum;                                  // MaxFrameNum
+        uint64_t     FrameCropRight;                               // frame_crop_right_offset
+        uint64_t     FrameCropTop;                                 // frame_crop_top_offset
+        uint64_t     FrameCropBottom;                              // frame_crop_bottom_offset
+        uint32_t     DepthFrameLeftCropOffset;                     // depth_frame_crop_left_offset
+        uint32_t     DepthFrameRightCropOffset;                    // depth_frame_crop_right_offset
+        uint32_t     DepthFrameTopCropOffset;                      // depth_frame_crop_top_offset
+        uint32_t     DepthFrameBottomCropOffset;                   // depth_frame_crop_bottom_offset
+        uint32_t     PicHeightInMapUnitsMinus1;                    // pic_height_in_map_units_minus1
+        int32_t      MaxRefFrames;                                 // max_num_ref_frames
+        int32_t      OffsetNonRefPic;                              // offset_for_non_ref_pic
+        int32_t      OffsetTop2Bottom;                             // offset_for_top_to_bottom_field
+        uint16_t     PicWidthInMacroBlocksMinus1;                  // pic_width_in_mbs_minus1
+        uint16_t     ViewCount:11;                                 // num_views_minus1
+        uint16_t     DepthHorizontalDisparity:11;                  // depth_hor_mult_minus1
+        uint16_t     DepthVerticalDisparity:11;                    // depth_ver_mult_minus1
+        uint16_t     GridPosViewCount:11;                          // grid_pos_num_views
+        uint8_t      ProfileIDC;                                   // profile_idc
+        uint8_t      QPBDOffsetChroma;                             // QpBdOffsetC
+        uint8_t      RefFramesInPicOrder;                          // num_ref_frames_in_pic_order_cnt_cycle
+        uint8_t      DepthPicWidthInMacroBlocks;                   // depth_pic_width_in_mbs_minus1
+        uint8_t      DepthPicHeightInMapUnits;                     // depth_pic_height_in_map_units_minus1
+        uint8_t      NumLevelValues:7;                             // num_level_values_signalled_minus1
+        uint8_t      MFCFormatIDC:6;                               // mfc_format_idc
+        uint8_t      DepthHorizontalRSH:6;                         // depth_hor_rsh
+        uint8_t      DepthVerticalRSH:6;                           // depth_ver_rsh
+        uint8_t      AlphaOpaqueValue:5;                           // alpha_opaque_value
+        uint8_t      AlphaTransparentValue:5;                      // alpha_transparent_value
+        uint8_t      SeqParamSetID:5;                              // seq_parameter_set_id
+        uint8_t      MacroBlockWidthChroma:5;                      // MbWidthC
+        uint8_t      MacroBlockHeightChroma:5;                     // MbHeightC
+        uint8_t      LumaBitDepthMinus8:4;                         // bit_depth_luma_minus8
+        uint8_t      ChromaBitDepthMinus8:4;                       // bit_depth_chroma_minus8
+        uint8_t      BitDepthLuma:4;                               // BitDepthL
+        uint8_t      BitDepthChroma:4;                             // BitDepthC
+        uint8_t      MaxFrameNumMinus4:4;                          // log2_max_frame_num_minus4
+        uint8_t      MaxPicOrder:4;                                // log2_max_pic_order_cnt_lsb_minus4
+        uint8_t      AuxiliaryBitDepth:4;                          // bit_depth_aux_minus8
+        uint8_t      ChromaFormatIDC:2;                            // chroma_format_idc
+        uint8_t      ChromaArrayType:2;                            // ChromaArrayType
+        uint8_t      PicOrderCount:2;                              // pic_order_cnt_type
+        uint8_t      AuxiliaryFormatID:2;                          // aux_format_idc
+        uint8_t      AVC3DAcquisitionIDC:2;                        // 3dv_acquisition_idc
         bool         ConstraintFlag0:1;                            // constraint_set0_flag
         bool         ConstraintFlag1:1;                            // constraint_set1_flag
         bool         ConstraintFlag2:1;                            // constraint_set2_flag
@@ -42,77 +113,6 @@ extern "C" {
         bool         MVCVUIParamsPresent:1;                        // mvc_vui_parameters_present_flag
         bool         AdditionalExtension2:1;                       // additional_extension2_flag
         bool         AdditionalExtension2DataFlag:1;               // additional_extension2_data_flag
-        uint8_t      ChromaFormatIDC:2;                            // chroma_format_idc
-        uint8_t      ChromaArrayType:2;                            // ChromaArrayType
-        uint8_t      PicOrderCount:2;                              // pic_order_cnt_type
-        uint8_t      AuxiliaryFormatID:2;                          // aux_format_idc
-        uint8_t      AVC3DAcquisitionIDC:2;                        // 3dv_acquisition_idc
-        uint8_t      LumaBitDepthMinus8:4;                         // bit_depth_luma_minus8
-        uint8_t      ChromaBitDepthMinus8:4;                       // bit_depth_chroma_minus8
-        uint8_t      BitDepthLuma:4;                               // BitDepthL
-        uint8_t      BitDepthChroma:4;                             // BitDepthC
-        uint8_t      MaxFrameNumMinus4:4;                          // log2_max_frame_num_minus4
-        uint8_t      MaxPicOrder:4;                                // log2_max_pic_order_cnt_lsb_minus4
-        uint8_t      AuxiliaryBitDepth:4;                          // bit_depth_aux_minus8
-        uint32_t     AlphaOpaqueValue:5;                           // alpha_opaque_value
-        uint8_t      AlphaTransparentValue:5;                      // alpha_transparent_value
-        uint8_t      SeqParamSetID:5;                              // seq_parameter_set_id
-        uint8_t      MacroBlockWidthChroma:5;                      // MbWidthC
-        uint8_t      MacroBlockHeightChroma:5;                     // MbHeightC
-        uint8_t      MFCFormatIDC:6;                               // mfc_format_idc
-        uint8_t      DepthHorizontalRSH:6;                         // depth_hor_rsh
-        uint8_t      DepthVerticalRSH:6;                           // depth_ver_rsh
-        uint8_t      NumLevelValues:7;                             // num_level_values_signalled_minus1
-        uint16_t     ViewCount:11;                                 // num_views_minus1
-        uint16_t     DepthHorizontalDisparity:11;                  // depth_hor_mult_minus1
-        uint16_t     DepthVerticalDisparity:11;                    // depth_ver_mult_minus1
-        uint16_t     GridPosViewCount:11;                          // grid_pos_num_views
-        uint8_t      ProfileIDC;                                   // profile_idc
-        uint8_t      QPBDOffsetChroma;                             // QpBdOffsetC
-        int32_t      OffsetNonRefPic;                              // offset_for_non_ref_pic
-        int32_t      OffsetTop2Bottom;                             // offset_for_top_to_bottom_field
-        uint8_t      RefFramesInPicOrder;                          // num_ref_frames_in_pic_order_cnt_cycle
-        int32_t      MaxRefFrames;                                 // max_num_ref_frames
-        uint16_t     PicWidthInMacroBlocksMinus1;                  // pic_width_in_mbs_minus1
-        uint32_t     PicHeightInMapUnitsMinus1;                    // pic_height_in_map_units_minus1
-        uint64_t     FrameCropLeft;                                // frame_crop_left_offset
-        uint64_t     MaxFrameNum;                                  // MaxFrameNum
-        uint64_t     FrameCropRight;                               // frame_crop_right_offset
-        uint64_t     FrameCropTop;                                 // frame_crop_top_offset
-        uint64_t     FrameCropBottom;                              // frame_crop_bottom_offset
-        uint8_t      DepthPicWidthInMacroBlocks;                   // depth_pic_width_in_mbs_minus1
-        uint8_t      DepthPicHeightInMapUnits;                     // depth_pic_height_in_map_units_minus1
-        uint32_t     DepthFrameLeftCropOffset;                     // depth_frame_crop_left_offset
-        uint32_t     DepthFrameRightCropOffset;                    // depth_frame_crop_right_offset
-        uint32_t     DepthFrameTopCropOffset;                      // depth_frame_crop_top_offset
-        uint32_t     DepthFrameBottomCropOffset;                   // depth_frame_crop_bottom_offset
-        uint8_t     *AVC3DViewID;                                  // view_id_3dv
-        uint8_t     *GridPosViewID;                                // grid_pos_view_id
-        uint8_t     *GridPosX;                                     // grid_pos_x
-        uint8_t     *GridPosY;                                     // grid_pos_y
-        uint16_t    *NumApplicableOps;                             // num_applicable_ops_minus1
-        uint8_t     *MVCViewX;                                     // view0_grid_position_x view1_grid_position_x
-        uint8_t     *MVCViewY;                                     // view0_grid_position_y view1_grid_position_y
-        bool        *DepthViewPresent;                             // depth_view_present_flag
-        uint8_t     *DepthViewID;                                  // DepthViewId
-        bool        *TextureViewPresent;                           // texture_view_present_flag
-        uint8_t    **LevelIDC;                                     // level_idc
-        unsigned   **ScalingListFlag;                              // seq_scaling_list_present_flag
-        int32_t    **RefFrameOffset;                               // offset_for_ref_frame
-        uint16_t   **ViewID;                                       // view_id
-        uint8_t    **AnchorRefsCount;                              // num_anchor_refs_l0 num_anchor_refs_l1
-        uint8_t    **AppOpTemporalID;                              // applicable_op_temporal_id
-        uint16_t   **AppOpNumTargetViews;                          // applicable_op_num_target_views_minus1
-        uint8_t    **AppOpNumViews;                                // applicable_op_num_views_minus1
-        uint8_t    **AppOpTextureViews;                            // applicable_op_num_texture_views_minus1
-        uint8_t    **AppOpNumDepthViews;                           // applicable_op_num_depth_views
-        uint16_t   **MVCDAppOpDepthViews;                          // applicable_op_num_depth_views_minus1
-        uint32_t  ***AnchorRef;                                    // anchor_ref_l0 anchor_ref_l1
-        uint8_t   ***NonAnchorRefCount;                            // num_non_anchor_refs_l0 num_non_anchor_refs_l1
-        uint16_t  ***NonAnchorRef;                                 // non_anchor_ref_l0 non_anchor_ref_l1
-        uint8_t   ***AppOpTargetViewID;                            // applicable_op_target_view_id
-        bool      ***AppOpDepthFlag;                               // applicable_op_depth_flag
-        bool      ***AppOpTextureFlag;                             // applicable_op_texture_flag
     } SequenceParameterSet;
     
     typedef struct PictureParameterSet {

@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/BitIO/libBitIO/include/CommandLineIO.h"
+#include "../Dependencies/ModernPNG/Dependencies/libPCM/Dependencies/FoundationIO/libFoundationIO/include/CommandLineIO.h"
 
 #include "../libModernAVC/include/libModernAVC.h"
 #include "../libModernAVC/include/Private/Encode/libModernAVC_SetEncodeOptions.h"
