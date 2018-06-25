@@ -35,8 +35,6 @@ extern "C" {
         AVCStopBit                                  =   1,
     };
     
-    static const char *         = "libModernAVC";
-    
     enum EntropyCoder {
         ExpGolomb                                   =  0,
         Arithmetic                                  =  1,

@@ -12,11 +12,11 @@ extern "C" {
 #endif
     
     void SetAVCEncodeProfile(EncodeAVC *Enc, const uint8_t ProfileMajor, const uint8_t ProfileMinor) {
-        if (Enc == NULL) {
-            Log(Log_ERROR, __func__, U8("Pointer to DecodeAVC is NULL"));
-        } else {
+        if (Enc != NULL) {
             Enc->ProfileMajor = ProfileMajor;
             Enc->ProfileMinor = ProfileMinor;
+        } else {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
         }
     }
     

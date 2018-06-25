@@ -52,7 +52,7 @@ extern "C" {
     
     void WriteArithmetic(BitBuffer *BitB, double *ProbabilityTable[], size_t TableSize, uint64_t Bits2Encode) { // Use the least precision you can get away with to be as efficent as possible.
         if (BitB == NULL) {
-            Log(LOG_ERROR, ModernAVCLibraryName, __func__, "Pointer to BitBuffer is NULL");
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
         } else {
             uint64_t High = 0xFFFFFFFFFFFFFFFFULL, Low = 0ULL, Range = 0ULL, Probability = 0ULL;
             while ((Bits2Encode >= High) && (Bits2Encode <= Low)) {
@@ -123,7 +123,7 @@ extern "C" {
     
     bool IsThereMoreDataInThisNAL() { // more_rbsp_data
         if (Enc == NULL) {
-            Log(LOG_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
         } else {
             if (there is no more data) {
                 return false;
@@ -152,7 +152,7 @@ extern "C" {
     size_t GetSizeOfNALUnit(DecodeAVC *Dec, BitBuffer *BitB) {
         
     }
-    
+    /*
     bool IsThereMoreDataInThisNAL() { // more_rbsp_data, TODO: This function needs to be finished
         if (there is no more data) {
             return false;
@@ -160,7 +160,7 @@ extern "C" {
             // find the rightmost 1 bit, Given the position of this bit, which is the first bit (rbsp_stop_one_bit) of the rbsp_trailing_bits( ) syntax structure
         }
     }
-    
+    */
 #ifdef __cplusplus
 }
 #endif

@@ -6,42 +6,38 @@ extern "C" {
 #endif
     
     EncodeAVC *InitAVCEncoder(void) {
-        EncodeAVC *Enc                = (EncodeAVC*) calloc(1, sizeof(EncodeAVC));
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Not enough memory to allocate EncodeAVC");
+        EncodeAVC *Enc                = calloc(1, sizeof(EncodeAVC));
+        if (Enc != NULL) {
+            Enc->NAL                  = calloc(1, sizeof(NALHeader));
+            Enc->SPS                  = calloc(1, sizeof(SequenceParameterSet));
+            Enc->PPS                  = calloc(1, sizeof(PictureParameterSet));
+            Enc->VUI                  = calloc(1, sizeof(VideoUsabilityInformation));
+            Enc->HRD                  = calloc(1, sizeof(HypotheticalReferenceDecoder));
+            Enc->SEI                  = calloc(1, sizeof(SupplementalEnhancementInfo));
+            Enc->Slice                = calloc(1, sizeof(Slice));
+            Enc->SVC                  = calloc(1, sizeof(ScalableVideoCoding));
+            Enc->DPS                  = calloc(1, sizeof(DepthParameterSet));
+            Enc->MacroBlock           = calloc(1, sizeof(MacroBlock));
         } else {
-            Enc->NAL                  = (NALHeader*)                    calloc(1, sizeof(NALHeader));
-            Enc->SPS                  = (SequenceParameterSet*)         calloc(1, sizeof(SequenceParameterSet));
-            Enc->PPS                  = (PictureParameterSet*)          calloc(1, sizeof(PictureParameterSet));
-            Enc->VUI                  = (VideoUsabilityInformation*)    calloc(1, sizeof(VideoUsabilityInformation));
-            Enc->HRD                  = (HypotheticalReferenceDecoder*) calloc(1, sizeof(HypotheticalReferenceDecoder));
-            Enc->SEI                  = (SupplementalEnhancementInfo*)  calloc(1, sizeof(SupplementalEnhancementInfo));
-            Enc->Slice                = (Slice*)                        calloc(1, sizeof(Slice));
-            Enc->SVC                  = (ScalableVideoCoding*)          calloc(1, sizeof(ScalableVideoCoding));
-            Enc->DPS                  = (DepthParameterSet*)            calloc(1, sizeof(DepthParameterSet));
-            Enc->MacroBlock           = (MacroBlock*)                   calloc(1, sizeof(MacroBlock));
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
         }
         return Enc;
     }
     
     bool AreAllViewsPaired(EncodeAVC *Enc) {
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else {
-            bool AllViewsPairedFlag = false;
+        bool AllViewsPairedFlag = false;
+        if (Enc != NULL) {
             for (uint8_t View = 0; View < Enc->SPS->ViewCount; View++) {
                 AllViewsPairedFlag = (1 && Enc->SPS->DepthViewPresent[View] && Enc->SPS->TextureViewPresent[View]);
             }
+        } else {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
         }
         return AllViewsPairedFlag;
     }
     
     void ParseTransformCoeffs(EncodeAVC *Enc, uint8_t i16x16DC, uint8_t i16x16AC, uint8_t Level4x4, uint8_t Level8x8, uint8_t StartIndex, uint8_t EndIndex) { // ParseTransformCoeffs
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else if (BitB == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to BitBuffer is NULL");
-        } else {
+        if (Enc != NULL) {
             uint8_t Intra16x16DCLevel = i16x16DC, Intra16x16ACLevel = i16x16AC, LumaLevel4x4 = Level4x4, LumaLevel8x8 = Level8x8;
             // Return the first 4 variables
             if (Enc->PPS->EntropyCodingMode == ExpGolomb) {
@@ -60,16 +56,13 @@ extern "C" {
             } else if (Enc->SPS->ChromaArrayType == Chroma444) {
                 
             }
+        } else {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
         }
     }
     
-    void ResidualLuma(EncodeAVC *Enc, BitBuffer *BitB, int i16x16DClevel, int i16x16AClevel, int level4x4,
-                      int level8x8, int startIdx, int endIdx) { // residual_luma
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else if (BitB == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to BitBuffer is NULL");
-        } else {
+    void ResidualLuma(EncodeAVC *Enc, BitBuffer *BitB, int i16x16DClevel, int i16x16AClevel, int level4x4, int level8x8, int startIdx, int endIdx) { // residual_luma
+        if (Enc != NULL && BitB != NULL) {
             if (startIdx == 0 && MacroBlockPartitionPredictionMode(Enc, Enc->MacroBlock->Type, 0) == Intra_16x16) {
                 ParseTransformCoeffs(Enc, i16x16DClevel, 0, 15, 16);
             }
@@ -106,13 +99,15 @@ extern "C" {
                     }
                 }
             }
+        } else if (Enc == NULL) {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+        } else if (BitB == NULL) {
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
         }
     }
     
     int8_t MacroBlock2SliceGroupMap(EncodeAVC *Enc, uint8_t CurrentMacroBlock) { // MbToSliceGroupMap
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else {
+        if (Enc != NULL) {
             if (Enc->PPS->SliceGroups == 1 && (Enc->PPS->SliceGroupMapType == 3 || Enc->PPS->SliceGroupMapType == 4 || Enc->PPS->SliceGroupMapType == 5)) {
                 if (Enc->PPS->SliceGroupMapType == 3) {
                     if (Enc->PPS->SliceGroupChangeDirection == false) {
@@ -134,28 +129,30 @@ extern "C" {
                     }
                 }
             }
+        } else {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
         }
         return -1; // failure
     }
     
     void rbsp_slice_trailing_bits(EncodeAVC *Enc, BitBuffer *BitB) {
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else {
+        if (Enc != NULL && BitB != NULL) {
             AlignBitBuffer(BitB, 1); // rbsp_trailing_bits();
             if (Enc->PPS->EntropyCodingMode == Arithmetic) {
                 while (more_rbsp_trailing_data()) {
-                    uint16_t CABACZeroWord = ReadBits(BitIOMSByte, BitIOLSBit, BitB, 16); /* equal to 0x0000 */
+                    uint16_t CABACZeroWord = ReadBits(MSByteFirst, LSBitFirst, BitB, 16); /* equal to 0x0000 */
                 }
             }
+        } else if (Enc == NULL) {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+        } else if (BitB == NULL) {
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
         }
     }
     
     uint8_t MacroBlockPartitionPredictionMode(EncodeAVC *Enc, uint8_t MacroBlockType, uint8_t PartitionNumber) {  // MbPartPredMode
         uint8_t ReturnValue = 0;
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else {
+        if (Enc != NULL) {
             if (MacroBlockType == 0) {
                 if (Enc->MacroBlock->TransformSizeIs8x8 == true) {
                     ReturnValue = Intra_8x8;
@@ -213,22 +210,21 @@ extern "C" {
             } else if (MacroBlockType == 25) {
                 ReturnValue  = I_PCM;
             }
+            if (NotPartitioned == true) {
+                return BlockPredictionMode;
+            } else if (PartitionNumber >= 0) {
+                PartitionMode;
+            }
+        } else if (Enc == NULL) {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+        } else if (BitB == NULL) {
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
         }
-        /*
-         if (NotPartitioned == true) {
-         return BlockPredictionMode;
-         } else if (PartitionNumber >= 0) {
-         PartitionMode;
-         }
-         }
-         */
         return ReturnValue;
     }
     
     uint64_t NextMacroBlockAddress(EncodeAVC *Enc, uint64_t CurrentMacroBlockAddress) { // NextMbAddress
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else {
+        if (Enc != NULL && BitB != NULL) {
             while (CurrentMacroBlockAddress + 1 < Enc->Slice->PicSizeInMacroBlocks && MacroBlock2SliceGroupMap(Enc, CurrentMacroBlockAddress + 1) != MacroBlock2SliceGroupMap(Enc, CurrentMacroBlockAddress)) {
                 i++; nextMbAddress = I
             }
@@ -236,30 +232,36 @@ extern "C" {
             for (uint64_t I = CurrentMacroBlockAddress + 1; I < Enc->Slice->PicSizeInMacroBlocks && MbToSliceGroups[I]) {
                 MacroBlock2SliceGroupMap(Enc, CurrentMacroBlockAddress);
             }
+        } else if (Enc == NULL) {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+        } else if (BitB == NULL) {
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
         }
     }
     
     size_t GetSizeOfNALUnit(EncodeAVC *Enc, BitBuffer *BitB) {
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else if (BitB == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to BitBuffer is NULL");
-        } else {
+        if (Enc != NULL && BitB != NULL) {
             
+        } else if (Enc == NULL) {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+        } else if (BitB == NULL) {
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
         }
         return 0;
     }
     
     uint8_t CalculateNumberOfTimeStamps(EncodeAVC *Enc) { // PicOrderCount
-        if (Enc == NULL) {
-            Log(LOG_ERROR, , __func__, "Pointer to EncodeAVC is NULL");
-        } else {
+        if (Enc != NULL && BitB != NULL) {
             uint8_t NumTimeStamps = 0;
             if ((Enc->Slice->SliceIsInterlaced == false) && (Enc->Slice->TopFieldOrderCount == Enc->Slice->BottomFieldOrderCount)) {
                 NumTimeStamps = 1;
             } else if (0 == 1) {
                 
             }
+        } else if (Enc == NULL) {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+        } else if (BitB == NULL) {
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
         }
         return 0;
     }
@@ -270,24 +272,27 @@ extern "C" {
      */
     
     
-    /*
-     void ConvertRGB2YCgCo(EncodeAVC *Enc, uint8_t NumChannels, uint8_t NumPixels, uint16_t *DecodedMB[3][256]) {
-     uint16_t Temp, Green[NumChannels][NumPixels], Red[NumChannels][NumPixels], Blue[NumChannels][NumPixels];
-     
-     // Y  = DecodedMB[0]
-     // Cb = DecodedMB[1]
-     // Cr = DecodedMB[2]
-     
-     for (uint8_t Channel = 0; Channel < 3; Channel++) {
-     for (uint8_t Pixel = 0; Pixel < NumPixels; Pixel++) {
-     Temp                  = DecodedMB[0][Pixel] − (DecodedMB[1][Pixel] − (1 << (BitDepthC −1)));
-     Green[Channel][Pixel] = Clip1Y(DecodedMB[0][Pixel] + (DecodedMB[1][Pixel] − (1 << (BitDepthC − 1))));
-     Blue[Channel][Pixel]  = Clip1Y(Temp − (DecodedMB[2][Pixel] − (1 << (BitDepthC − 1))));
-     Red[Channel][Pixel]   = Clip1Y(Temp + (DecodedMB[2][Pixel] − (1 << (BitDepthC − 1))));
-     }
-     }
-     }
-     */
+    void ConvertRGB2YCgCo(EncodeAVC *Enc, uint8_t NumChannels, uint8_t NumPixels, uint16_t *DecodedMB[3][256]) {
+        uint16_t Temp, Green[NumChannels][NumPixels], Red[NumChannels][NumPixels], Blue[NumChannels][NumPixels];
+        
+        // Y  = DecodedMB[0]
+        // Cb = DecodedMB[1]
+        // Cr = DecodedMB[2]
+        if (Enc != NULL && BitB != NULL) {
+            for (uint8_t Channel = 0; Channel < 3; Channel++) {
+                for (uint8_t Pixel = 0; Pixel < NumPixels; Pixel++) {
+                    Temp                  = DecodedMB[0][Pixel] − (DecodedMB[1][Pixel] − (1 << (BitDepthC −1)));
+                    Green[Channel][Pixel] = Clip1Y(DecodedMB[0][Pixel] + (DecodedMB[1][Pixel] − (1 << (BitDepthC − 1))));
+                    Blue[Channel][Pixel]  = Clip1Y(Temp − (DecodedMB[2][Pixel] − (1 << (BitDepthC − 1))));
+                    Red[Channel][Pixel]   = Clip1Y(Temp + (DecodedMB[2][Pixel] − (1 << (BitDepthC − 1))));
+                }
+            }
+        } else if (Enc == NULL) {
+            Log(Log_ERROR, __func__, U8("Pointer to EncodeAVC is NULL"));
+        } else if (BitB == NULL) {
+            Log(Log_ERROR, __func__, U8("BitBuffer Pointer is NULL"));
+        }
+    }
     
     // When you encode AVC, make sure that you center the image, and add any black pixels to the edges you need in order to support any resolution.
     
